@@ -5,6 +5,7 @@
       <h1 class="title">
         planet-meron.com
       </h1>
+      <nuxt-link to="/articles">articles</nuxt-link>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
