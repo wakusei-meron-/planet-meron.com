@@ -1,20 +1,44 @@
 <template>
-  <div>
-    <Nuxt />
-  </div>
+  <v-app :style="{ background: $vuetify.theme.themes.light.background }">
+    <v-app-bar flat>
+      <v-tabs centered class="ml-n9" color="grey darken-1">
+        <v-tab v-for="item in items" :key="item.url" :to="item.url">
+          {{ item.name }}
+        </v-tab>
+      </v-tabs>
+    </v-app-bar>
+    <v-main>
+      <v-container>
+        <nuxt />
+      </v-container>
+    </v-main>
+    <v-footer absolute>
+      <v-col class="text-center">
+        ©planet-meron.com
+      </v-col>
+    </v-footer>
+  </v-app>
 </template>
+
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+  data() {
+    return {
+      items: [
+        { name: "Blog", url: "/" },
+        { name: "Profile", url: "/profile" }
+      ]
+    };
+  }
+});
+</script>
 
 <style>
 html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
