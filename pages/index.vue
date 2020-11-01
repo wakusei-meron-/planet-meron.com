@@ -1,68 +1,25 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        planet-meron.com
-      </h1>
-      <nuxt-link to="/articles">articles</nuxt-link>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+  <div class="article-card-container">
+    <div v-for="article in articles" :key="article.slug">
+      <article-card v-bind:article="article"></article-card>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import ArticleCard from "../components/ArticleCard.vue";
 
-export default Vue.extend({});
+export default Vue.extend({
+  components: {
+    ArticleCard
+  },
+  async asyncData({ $content, params }) {
+    const query = await $content("articles" || "index").limit(15);
+    const articles = await query.fetch();
+    return { articles };
+  }
+});
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
+<style></style>
