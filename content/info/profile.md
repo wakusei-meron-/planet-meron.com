@@ -57,22 +57,6 @@ AI技術が発展して、ルール化できる作業は自動化されて、人
 
 [booth](https://planet-meron.booth.pm/items/1576199)にて電子版を販売してるので、興味がある人は応援していただけると幸いです
 
-## 職歴
-* 2020/4 ~       [homie株式会社](https://homie.co.jp/)
-  *  不動産プロダクト開発
-    * 利用技術：AWS, Nuxt, DDD, terraform, Github-actions
-    * 開発言語：Golang
-    * 作業工程：技術選定及び検証, 全体設計及び実装.
-* 2015/4 ~ 2020/3 [CyberAgent](https://www.cyberagent.co.jp/)
-  * 広告配信システム(DSP)開発・データ分析(2017~2020)
-    * 利用技術：AWS, Docker, k8s, 統計, 制御工学, 機械学習, 強化学習
-    * 開発言語：Golang, Python, SQL, Scala
-    * 作業工程：設計, 及び実装. データ分析・仮説検証, ABテスト
-  * 広告効果測定ツールシステム開発 (2015~2017)
-    * 利用技術：PlayFramework2, MySQL, AWS, Presto, CicleCI
-    * 開発言語：Scala, Angular, SQL
-    * 作業工程：管理画面, 分析基盤管理・データ抽出
-
 ## 関連リンク
 * [Qiita](https://qiita.com/PlanetMeron)
 * [SlideShare](https://www.slideshare.net/genkiishibashi3/edit_my_uploads)
