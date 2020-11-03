@@ -14,7 +14,6 @@
     "@nuxt/content": "^1.10.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "core-js": "^3.6.5",
-    "element-ui": "^2.13.2",
     "nuxt": "^2.14.6"
   },
   "devDependencies": {
