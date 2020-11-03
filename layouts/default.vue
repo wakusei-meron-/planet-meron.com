@@ -48,7 +48,7 @@
         <nuxt />
       </v-container>
     </v-main>
-    <v-footer absolute>
+    <v-footer>
       <v-col class="text-center">
         ©planet-meron.com
       </v-col>
