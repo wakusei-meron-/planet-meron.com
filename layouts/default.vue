@@ -1,7 +1,11 @@
 <template>
   <v-app :style="{ background: $vuetify.theme.themes.light.background }">
     <v-app-bar class="header">
-      <v-toolbar-title>Planet MERON's Note</v-toolbar-title>
+        <v-toolbar-title>
+          <nuxt-link to="/">
+          Planet MERON's Note
+          </nuxt-link>
+        </v-toolbar-title>
       <v-spacer></v-spacer>
       <a
         href="https://github.com/wakusei-meron-"
@@ -96,7 +100,15 @@ html {
   min-height: 100vh;
 }
 
+.logo-text {
+  color: white;
+}
+
+a:link { color:#0000008A; text-decoration:none }
+a:visited { color:#0000008A; text-decoration:none }
+
 a {
+  color: black;
   text-decoration: none;
 }
 </style>

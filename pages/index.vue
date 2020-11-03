@@ -15,7 +15,7 @@ export default Vue.extend({
     ArticleCard
   },
   async asyncData({ $content, params }) {
-    const query = await $content("articles").limit(15);
+    const query = await $content("articles").sortBy("date", "desc").limit(15);
     const articles = await query.fetch();
     return { articles };
   }
