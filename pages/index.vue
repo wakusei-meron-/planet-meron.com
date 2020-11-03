@@ -1,7 +1,7 @@
 <template>
   <div class="article-card-container">
-    <div v-for="article in articles" :key="article.slug">
-      <article-card v-bind:article="article"></article-card>
+    <div v-for="a in articles" :key="a.slug">
+      <article-card v-bind:article="a"></article-card>
     </div>
   </div>
 </template>
