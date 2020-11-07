@@ -1,46 +1,25 @@
 <template>
   <v-app :style="{ background: $vuetify.theme.themes.light.background }">
     <v-app-bar class="header">
-        <v-toolbar-title>
-          <nuxt-link to="/">
+      <nuxt-link class="logo" to="/">
+        <h1 class="logo">
           Planet MERON's Note
-          </nuxt-link>
-        </v-toolbar-title>
+        </h1>
+      </nuxt-link>
       <v-spacer></v-spacer>
       <a
-        href="https://github.com/wakusei-meron-"
+        v-for="icon in icons"
+        :key="icon.url"
+        :href="icon.url"
         class="header-icon"
         target="_blank"
       >
         <v-btn icon>
-          <v-icon>mdi-github</v-icon>
-        </v-btn>
-      </a>
-      <a
-        href="https://twitter.com/b0941015"
-        class="header-icon"
-        target="_blank"
-      >
-        <v-btn icon>
-          <v-icon>mdi-twitter</v-icon>
-        </v-btn>
-      </a>
-      <a
-        href="https://www.instagram.com/planet_meron/?hl=ja"
-        class="header-icon"
-        target="_blank"
-      >
-        <v-btn icon>
-          <v-icon>mdi-instagram</v-icon>
-        </v-btn>
-      </a>
-      <a href="mailto:b0941015@gmail.com" class="header-icon" target="_blank">
-        <v-btn icon>
-          <v-icon>mdi-email</v-icon>
+          <v-icon>{{ icon.name }}</v-icon>
         </v-btn>
       </a>
     </v-app-bar>
-    <v-app-bar flat>
+    <v-app-bar flat class="header">
       <v-tabs centered class="ml-n9" color="grey darken-1">
         <v-tab v-for="item in items" :key="item.url" :to="item.url">
           {{ item.name }}
@@ -49,7 +28,14 @@
     </v-app-bar>
     <v-main>
       <v-container>
-        <nuxt />
+        <v-row>
+          <v-col cols="12" xs="12" sm="8">
+            <nuxt />
+          </v-col>
+          <v-col cols="12" xs="12" sm="4">
+            <side-menu />
+          </v-col>
+        </v-row>
       </v-container>
     </v-main>
     <v-footer>
@@ -62,13 +48,24 @@
 
 <script lang="ts">
 import Vue from "vue";
+import SideMenu from "~/components/SideMenu.vue";
 
 export default Vue.extend({
+  components: { SideMenu },
   data() {
     return {
       items: [
         { name: "Blog", url: "/" },
         { name: "Profile", url: "/profile" }
+      ],
+      icons: [
+        { name: "mdi-github", url: "https://github.com/wakusei-meron-" },
+        { name: "mdi-twitter", url: "https://twitter.com/b0941015" },
+        {
+          name: "mdi-instagram",
+          url: "https://www.instagram.com/planet_meron/?hl=ja"
+        },
+        { name: "mdi-email", url: "mailto:b0941015@gmail.com" }
       ]
     };
   }
@@ -95,20 +92,26 @@ html {
   margin: 0;
 }
 
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
 .container {
   margin: 0 auto;
   min-height: 100vh;
 }
 
-.logo-text {
-  color: white;
-}
-
-a:link { color:#0000008A; text-decoration:none }
-a:visited { color:#0000008A; text-decoration:none }
-
-a {
-  color: black;
-  text-decoration: none;
+.logo {
+  display: block;
+  width: 300px;
+  height: 50px;
+  background: url("../assets/logo_main.png") no-repeat;
+  background-size: cover;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 </style>
