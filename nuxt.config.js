@@ -2,9 +2,13 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
+  server: {
+    port: 3002,
+    host: '0.0.0.0'
+  },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'planet-meron.com',
+    title: 'Planet Meron\'s Note',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
