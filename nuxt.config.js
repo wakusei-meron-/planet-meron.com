@@ -36,7 +36,12 @@ export default {
     '@nuxtjs/vuetify',
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    '@nuxtjs/google-analytics',
   ],
+  googleAnalytics: {
+    // Options
+    id: 'UA-46699536-4'
+  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
