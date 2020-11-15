@@ -17,6 +17,7 @@ export default Vue.extend({
   async asyncData({ $content, params }) {
     const query = await $content("articles")
       .sortBy("date", "desc")
+      .where({draft: {$ne: true}})
       .limit(15);
     const articles = await query.fetch();
     return { articles };
