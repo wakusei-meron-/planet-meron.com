@@ -1,21 +1,39 @@
 <template>
-  <article>
+  <article class="article">
     <dl>
-      <dd>{{ articles.date }}</dd>
+      <dd>{{ article.date }}</dd>
     </dl>
-    <h1>{{ articles.title }}</h1>
-    <div><img :src="articles.image" /></div>
-    <div v-for="tag in articles.tags" :key="tag">{{ tag }}</div>
+    <h1 class="article-title">{{ article.title }}</h1>
+    <div v-if="!!article.image"><img :src="article.image" /></div>
 
-    <nuxt-content :document="articles" />
+    <div class="article-tags">
+      <v-chip outlined v-for="tag in article.tags" :key="tag">
+        #{{ tag }}
+      </v-chip>
+    </div>
+
+    <nuxt-content :document="article" />
   </article>
 </template>
 
 <script>
 export default {
   async asyncData({ $content, params }) {
-    const articles = await $content("articles", params.slug || "index").fetch();
-    return { articles };
+    const article = await $content("articles", params.slug || "index").fetch();
+    return { article };
   }
 };
 </script>
+<style lang="scss" scoped>
+.article {
+  &-title {
+    padding-bottom: 12px;
+    font-size: 2rem;
+  }
+
+  &-tags {
+    text-align: right;
+    padding-bottom: 18px;
+  }
+}
+</style>

@@ -8,10 +8,6 @@ tags:
   - MySQL
 ---
 
-みなさんデータベースのスキーマ管理は、どうやっていますか？
-
-いつ・何のスキーマ変更をしたかをを管理するため[golang-migrate](https://github.com/golang-migrate/migrate)などマイグレーション用のツールを使ってバージョン管理をすると思います
-
 スキーマ変更時は、関連するデータの設計と実装を行うので問題ないのですが、規模が大きくなったり、新しい人が入ってくるような環境だと各テーブルやカラムに保存されるデータがどんなものかわからなくなりがちです
 
 Excelやesaなどのドキュメントで管理をすると、それを変更しないと本番のDBに反映されないなどの運用フローがないとほぼ確実にメンテされなくなります
@@ -41,13 +37,13 @@ WHERE TABLE_SCHEMA = 'sample'
 
 ```sql
 -- カラム名と型、コメントの表示
-select 
+SELECT 
   t.COLUMN_NAME AS `カラム名`,
   t.DATA_TYPE AS `データ型`,
   t.COLUMN_COMMENT AS `カラム詳細`
-from (
-    select * from INFORMATION_SCHEMA.COLUMNS 
-    where table_name = '{{table}}'
+FROM (
+    SELECT * FROM INFORMATION_SCHEMA.COLUMNS 
+    WHERE TABLE_NAME = '{{table}}'
 ) t
 ```
 
