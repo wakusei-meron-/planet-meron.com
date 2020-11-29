@@ -114,4 +114,21 @@ a:active {
   white-space: nowrap;
   overflow: hidden;
 }
+
+.nuxt-content {
+  * {
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  p{}
+}
 </style>
