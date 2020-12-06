@@ -18,9 +18,21 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        { hid: "description", name: "description", content: this.description }
+      ]
+    };
+  },
   async asyncData({ $content, params }) {
     const article = await $content("articles", params.slug || "index").fetch();
-    return { article };
+    return {
+      article,
+      title: article.title,
+      description: article.description
+    };
   }
 };
 </script>
