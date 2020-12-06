@@ -12,7 +12,13 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: 'Planet Meronの日々感じ、学んだことのメモ' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'Planet Meron' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://planet-meron.com' },
+      { hid: 'og:title', property: 'og:title', content: 'Planet Meron\'s Note' },
+      { hid: 'og:description', property: 'og:description', content: 'Planet Meronの日々感じ、学んだことのメモ' },
+      { hid: 'og:image', property: 'og:image', content: 'https://www.planet-meron.com/_nuxt/img/logo_main.d0137a3.png' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -21,7 +27,7 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
-    '~/assets/reset.css'
+    '~/assets/reset.css',
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -50,5 +56,14 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+  },
+
+  // Nuxt Content settings
+  content: {
+    markdown: {
+      prism: {
+        theme: 'prism-themes/themes/prism-coldark-cold.css'
+      }
+    }
   }
 }

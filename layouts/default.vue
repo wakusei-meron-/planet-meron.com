@@ -115,6 +115,11 @@ a:active {
   overflow: hidden;
 }
 
+.v-application code {
+  background-color: rgba(0,0,0,0);
+  color: rgba(0,0,0,222);
+}
+
 .nuxt-content {
   * {
     margin-bottom: 20px;
@@ -130,5 +135,16 @@ a:active {
   }
 
   p{}
+
+  ul {
+    list-style: circle;
+  }
+  ol {
+    list-style: decimal;
+  }
+  li {
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
 }
 </style>
