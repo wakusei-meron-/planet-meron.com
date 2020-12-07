@@ -22,7 +22,8 @@ export default {
     return {
       title: this.title,
       meta: [
-        { hid: "description", name: "description", content: this.description }
+        { hid: "description", name: "description", content: this.description },
+        { hid: 'og:description', property: 'og:description', content: this.description }
       ]
     };
   },
