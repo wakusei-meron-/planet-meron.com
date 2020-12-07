@@ -18,7 +18,9 @@ export default {
       { hid: 'og:url', property: 'og:url', content: 'https://planet-meron.com' },
       { hid: 'og:title', property: 'og:title', content: 'Planet Meron\'s Note' },
       { hid: 'og:description', property: 'og:description', content: 'Planet Meronの日々感じ、学んだことのメモ' },
-      { hid: 'og:image', property: 'og:image', content: 'https://www.planet-meron.com/_nuxt/img/logo_main.d0137a3.png' }
+      { hid: 'og:image', property: 'og:image', content: 'https://www.planet-meron.com/images/self_icon.png' },
+      { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+      { hid: 'twitter:site', name: 'twitter:site', content: '@b0941015' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
