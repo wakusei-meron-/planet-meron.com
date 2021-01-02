@@ -2,7 +2,7 @@
 title: Bazelをgolangプロジェクトをbuildする
 description: 自分が立ち上げたプロジェクトでバックエンドもフロントも言語が違うコンポーネントを一つのリポジトリで管理するモノレポを採用している　このモノレポという開発手法はGoogleやFacebookでも用いられている 自分の考え方としては、ベンチャーという組織においては価値を生むことが最優先なので...
 date: 2020/11/29
-tags: 
+tags:
   - Bazel
   - golang
 ---
@@ -11,17 +11,17 @@ tags:
 
 自分が立ち上げたプロジェクトでバックエンドもフロントも言語が違うコンポーネントを一つのリポジトリで管理するモノレポを採用している
 
-このモノレポという開発手法はGoogleやFacebookでも用いられている
+このモノレポという開発手法は Google や Facebook でも用いられている
 
 自分の考え方としては、ベンチャーという組織においては価値を生むことが最優先なので、開発言語や特定の役割にとらわれるのではなく開発技術・言語にとらわれず一貫したプロダクトの開発を行えるようにという思いもある
 
-今までは各コンポーネントでDocker-Composeを使っていたけど、[Bazel](https://docs.bazel.build/versions/3.7.0/tutorial/cpp.html) を使ってみる
+今までは各コンポーネントで Docker-Compose を使っていたけど、[Bazel](https://docs.bazel.build/versions/3.7.0/tutorial/cpp.html) を使ってみる
 
 ## ビルド方法
 
-[公式のドキュメント](https://docs.bazel.build/versions/3.7.0/getting-started.html) におけるチュートリアルはC++, Java, Android, iOSのみ存在する
+[公式のドキュメント](https://docs.bazel.build/versions/3.7.0/getting-started.html) におけるチュートリアルは C++, Java, Android, iOS のみ存在する
 
-Golangに関しては、 [rules_go](https://github.com/bazelbuild/rules_go) を参照すると良い
+Golang に関しては、 [rules_go](https://github.com/bazelbuild/rules_go) を参照すると良い
 
 まずはビルドするディレクトリ構成について
 
@@ -47,16 +47,16 @@ func main() {
 }
 ```
 
-bazel導入に必要なファイルは `WORKSPACE.bazel` と `BUILD.bazel`
+bazel 導入に必要なファイルは `WORKSPACE.bazel` と `BUILD.bazel`
 
-bazelには `WORKSPACE` という概念があり、ソースコードとビルドされたファイルを管理するためのディレクトリ定義する必要がある
+bazel には `WORKSPACE` という概念があり、ソースコードとビルドされたファイルを管理するためのディレクトリ定義する必要がある
 
-`WORKSPACE.bazel` はWORKSPACEを定義し、各言語の設定などを記述する
+`WORKSPACE.bazel` は WORKSPACE を定義し、各言語の設定などを記述する
 
-c++やjavaの場合はファイル再存在すれば動作をするが、golangの場合 `WORKSPACE.bazel` に下記の記述が必要になる
+c++や java の場合はファイル再存在すれば動作をするが、golang の場合 `WORKSPACE.bazel` に下記の記述が必要になる
 
 ```sh
-$  cat WORKSPACE.bazel 
+$  cat WORKSPACE.bazel
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
@@ -101,10 +101,10 @@ INFO: 1 process: 1 internal.
 INFO: Build completed successfully, 1 total action
 ```
 
-ビルドを行うとWORKSPACEで指定したディレクトリにbazelに関するファイル群が生成されます
+ビルドを行うと WORKSPACE で指定したディレクトリに bazel に関するファイル群が生成されます
 
 ```
-$ tree . -L 1               
+$ tree . -L 1
 .
 ├── BUILD.bazel
 ├── WORKSPACE.bazel
@@ -123,4 +123,4 @@ $ ./bazel-bin/hello_world_/hello_world
 hello world!
 ```
 
-無事bazelで、go言語をビルドして実行することができました
+無事 bazel で、go 言語をビルドして実行することができました
