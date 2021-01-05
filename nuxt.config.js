@@ -30,6 +30,7 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     '~/assets/reset.css',
+    '~/assets/scss/colors.scss'
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -45,15 +46,27 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     '@nuxtjs/google-analytics',
+    '@nuxtjs/fontawesome',
   ],
   googleAnalytics: {
     // Options
     id: 'UA-46699536-4'
   },
-
+  fontawesome: {
+    imports: [
+      {
+        set: '@fortawesome/free-brands-svg-icons',
+        icons: ['fab']
+      }
+    ]
+  },
+  styleResources: {
+    scss: ['./assets/scss/*.scss']
+  },
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    '@nuxt/content'
+    '@nuxt/content',
+    '@nuxtjs/style-resources'
   ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
