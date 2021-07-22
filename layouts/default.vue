@@ -116,8 +116,8 @@ a:active {
 }
 
 .v-application code {
-  background-color: rgba(0,0,0,0);
-  color: rgba(0,0,0,222);
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 222);
 }
 
 .nuxt-content {
@@ -134,7 +134,8 @@ a:active {
     font-size: 1.2rem;
   }
 
-  p{}
+  p {
+  }
 
   ul {
     list-style: circle;

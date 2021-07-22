@@ -7,7 +7,17 @@
             {{ article.title }}
           </v-card-title>
           <v-card-subtitle>
-            {{ article.date }}
+            <v-row>
+              <v-col>
+                {{ article.date }}
+              </v-col>
+              <v-spacer />
+              <v-col class="text-right">
+                <span class="text-right" v-for="tag in article.tags">
+                  #{{ tag }}
+                </span>
+              </v-col>
+            </v-row>
           </v-card-subtitle>
         </v-card>
       </nuxt-link>
