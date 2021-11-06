@@ -3,13 +3,13 @@
     <div v-for="a in articles" :key="a.slug">
       <article-card v-bind:article="a"></article-card>
     </div>
-    <div class="text-center">
-      <v-pagination
-        v-model="page"
-        :length="length"
-        @input="handleChangePage"
-      ></v-pagination>
-    </div>
+<!--    <div class="text-center">-->
+<!--      <v-pagination-->
+<!--        v-model="page"-->
+<!--        :length="length"-->
+<!--        @input="handleChangePage"-->
+<!--      ></v-pagination>-->
+<!--    </div>-->
   </div>
 </template>
 
@@ -22,29 +22,30 @@ export default Vue.extend({
     ArticleCard
   },
   async asyncData({ $content, query, redirect }) {
-    if (!query.page) {
-      redirect(301, `/`, {
-        page: "1",
-      })
-      return
-    }
-    const page = Number(query.page)
-
-    const perPage = 10
-
-    const total = (await $content("articles")
-      .where({ draft: { $ne: true } })
-      .fetch()).length
-    const length = Math.ceil(total / perPage)
+    // if (!query.page) {
+    //   redirect(301, `/`, {
+    //     page: "1",
+    //   })
+    //   return
+    // }
+    // console.log(query)
+    // const page = Number(query.page) || 1
+    //
+    // const perPage = 10
+    //
+    // const total = (await $content("articles")
+    //   .where({ draft: { $ne: true } })
+    //   .fetch()).length
+    // const length = Math.ceil(total / perPage)
 
 
     const q = await $content("articles")
       .sortBy("date", "desc")
       .where({ draft: { $ne: true } })
-      .skip(perPage * (page -1))
-      .limit(perPage);
+      // .skip(perPage * (page -1))
+      // .limit(perPage);
     const articles = await q.fetch();
-    return { articles, length, page };
+    return { articles };
   },
   watchQuery: ['page'],
   methods: {
