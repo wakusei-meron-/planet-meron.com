@@ -3,6 +3,13 @@
     <div v-for="a in articles" :key="a.slug">
       <article-card v-bind:article="a"></article-card>
     </div>
+    <div class="text-center">
+      <v-pagination
+        v-model="page"
+        :length="length"
+        @input="handleChangePage"
+      ></v-pagination>
+    </div>
   </div>
 </template>
 
@@ -14,13 +21,42 @@ export default Vue.extend({
   components: {
     ArticleCard
   },
-  async asyncData({ $content, params }) {
-    const query = await $content("articles")
+  async asyncData({ $content, query, redirect }) {
+    if (!query.page) {
+      redirect(301, `/`, {
+        page: "1",
+      })
+      return
+    }
+    const page = Number(query.page)
+
+    const perPage = 10
+
+    const total = (await $content("articles")
+      .where({ draft: { $ne: true } })
+      .fetch()).length
+    const length = Math.ceil(total / perPage)
+
+
+    const q = await $content("articles")
       .sortBy("date", "desc")
       .where({ draft: { $ne: true } })
-      .limit(15);
-    const articles = await query.fetch();
-    return { articles };
+      .skip(perPage * (page -1))
+      .limit(perPage);
+    const articles = await q.fetch();
+    return { articles, length, page };
+  },
+  watchQuery: ['page'],
+  methods: {
+    changeQuery(params: object) {
+      this.$router.push({
+        path: '/',
+        query: { ...this.$route.query, ...params }
+      })
+    },
+    handleChangePage(page: Number) {
+      this.changeQuery({ page })
+    }
   }
 });
 </script>
