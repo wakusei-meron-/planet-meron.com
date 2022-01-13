@@ -1,7 +1,7 @@
 ---
 title: 【感想】Netflix浅草キッド
 description:
-date: 2022/1/10
+date: 2022/01/10
 tags:
 - 2022
 - 映画
