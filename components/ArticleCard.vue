@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col>
-      <nuxt-link :to="/articles/ + article.slug">
+      <nuxt-link :to="article._path">
         <v-card class="article-card">
           <v-card-title class="article-card-title">
             {{ article.title }}
@@ -26,9 +26,9 @@
 </template>
 
 <script>
-import Vue from "vue";
+import {defineComponent} from "vue";
 
-export default Vue.extend({
+export default defineComponent({
   props: {
     article: {
       type: Object,

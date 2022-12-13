@@ -11,47 +11,42 @@
         #{{ tag }}
       </v-chip>
     </div>
-
-    <nuxt-content :document="article" />
-    <div v-if="false" class="article-sns-share">
-      <div class="article-sns-share-button">
-        <div class="article-sns-share-button-twitter">
-          <a href="">
-            <font-awesome-icon :icon="['fab', 'twitter']" />
-          </a>
-        </div>
-      </div>
-    </div>
+    <ContentRenderer :value="article" />
   </article>
 </template>
 
-<script>
-import FontAwesomeIcon from "@nuxtjs/fontawesome";
+<script setup>
+const route = useRoute()
 
-export default {
-  head() {
-    return {
-      title: this.title,
-      meta: [
-        { hid: "description", name: "description", content: this.description },
-        {
-          hid: "og:description",
-          property: "og:description",
-          content: this.description
-        },
-        { hid: "og:title", property: "og:title", content: this.title }
-      ]
-    };
-  },
-  async asyncData({ $content, params }) {
-    const article = await $content("articles", params.slug || "index").fetch();
-    return {
-      article,
-      title: article.title,
-      description: article.description
-    };
-  }
-};
+const { data: article } = await useAsyncData('article', () => {
+  return queryContent("article").where({_id: { $contains: route.params.slug}}).findOne()
+})
+// import FontAwesomeIcon from "@nuxtjs/fontawesome";
+//
+// export default {
+//   head() {
+//     return {
+//       title: this.title,
+//       meta: [
+//         { hid: "description", name: "description", content: this.description },
+//         {
+//           hid: "og:description",
+//           property: "og:description",
+//           content: this.description
+//         },
+//         { hid: "og:title", property: "og:title", content: this.title }
+//       ]
+//     };
+//   },
+//   async asyncData({ $content, params }) {
+//     const article = await $content("articles", params.slug || "index").fetch();
+//     return {
+//       article,
+//       title: article.title,
+//       description: article.description
+//     };
+//   }
+// };
 </script>
 <style lang="scss" scoped>
 .article {
