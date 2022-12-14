@@ -39,7 +39,7 @@ export default defineNuxtConfig({
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
-    '~/assets/reset.css',
+    // '~/assets/reset.css',
     "vuetify/lib/styles/main.sass"
   ],
 
@@ -51,32 +51,14 @@ export default defineNuxtConfig({
   components: true,
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
-  // buildModules: [
-  //   '@nuxtjs/vuetify',
-  //   // https://go.nuxtjs.dev/typescript
-  //   '@nuxt/typescript-build',
-  //   '@nuxtjs/google-analytics',
-  //   '@nuxtjs/fontawesome',
-  // ],
   // googleAnalytics: {
   //   // Options
   //   id: 'UA-46699536-4'
   // },
-  // fontawesome: {
-  //   imports: [
-  //     {
-  //       set: '@fortawesome/free-brands-svg-icons',
-  //       icons: ['fab']
-  //     }
-  //   ]
-  // },
-  // styleResources: {
-  //   scss: ['./assets/scss/*.scss']
-  // },
+
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxt/content'
-    // , '@nuxtjs/style-resources'
   ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
@@ -86,14 +68,10 @@ export default defineNuxtConfig({
 
   // Nuxt Content settings
   content: {
-    // https://content.nuxtjs.org/api/configuration/
-    // highlight: {
-    //   // コードハイライトを有効化する場合はテーマを設定
-    //   theme: 'github-light',
-    //   preload: [
-    //     'go',
-    //     'python'
-    //   ]
-    // }
+    highlight: {
+      // Theme used in all color schemes.
+      theme: 'github-light',
+      preload: ['go', 'python', 'sql', 'bash', 'sh', 'shell', 'xml', 'yaml']
+    }
   }
 })

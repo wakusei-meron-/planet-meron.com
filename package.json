@@ -13,7 +13,7 @@
   "dependencies": {
     "@mdi/js": "^5.8.55",
     "@nuxt/cli-edge": "^2.16.0-27720022.54e852f",
-    "@nuxt/content": "^2.2.2",
+    "@nuxt/content": "npm:@nuxt/content-edge@latest",
     "@nuxt/typescript-runtime": "^2.0.0",
     "core-js": "^3.6.5",
     "nuxt": "^3.0.0",
