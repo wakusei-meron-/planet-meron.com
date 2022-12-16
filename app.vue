@@ -101,6 +101,10 @@ a:active {
   text-decoration: none;
 }
 
+a {
+  color: inherit;
+}
+
 .container {
   margin: 0 auto;
   min-height: 100vh;
