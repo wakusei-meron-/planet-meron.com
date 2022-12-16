@@ -51,7 +51,7 @@ AI 技術が発展して、ルール化できる作業は自動化されて、�
 
 ## 本書きました
 
-[<img src="https://s2.booth.pm/42bd7159-5028-49f0-af1b-e1f3c53bf3f9/i/1576199/30463970-a62f-4c73-877c-16e4b1c7b2e3_base_resized.jpg" width="200px">](https://planet-meron.booth.pm/items/1576199)
+[<img width="200px" src="https://s2.booth.pm/42bd7159-5028-49f0-af1b-e1f3c53bf3f9/i/1576199/30463970-a62f-4c73-877c-16e4b1c7b2e3_base_resized.jpg">](https://planet-meron.booth.pm/items/1576199)
 
 電波でデータ通信ができるなら音波でもデータ通信できるのでは？というモチベーションで本を書きました
 

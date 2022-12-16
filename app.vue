@@ -105,6 +105,17 @@ a {
   color: inherit;
 }
 
+ul {
+  list-style: circle;
+}
+ol {
+  list-style: decimal;
+}
+li {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
 .container {
   margin: 0 auto;
   min-height: 100vh;
@@ -121,37 +132,4 @@ a {
   overflow: hidden;
 }
 
-//.v-application code {
-//  background-color: rgba(0, 0, 0, 0);
-//  color: rgba(0, 0, 0, 222);
-//}
-
-//.nuxt-content {
-//  * {
-//    margin-bottom: 20px;
-//  }
-//  h2 {
-//    font-weight: bold;
-//    font-size: 1.5rem;
-//  }
-//
-//  h3 {
-//    font-weight: bold;
-//    font-size: 1.2rem;
-//  }
-//
-//  p {
-//  }
-//
-//  ul {
-//    list-style: circle;
-//  }
-//  ol {
-//    list-style: decimal;
-//  }
-//  li {
-//    font-weight: bold;
-//    margin-bottom: 6px;
-//  }
-//}
 </style>

@@ -1,7 +1,7 @@
 <template>
   <article class="article">
     <dl>
-      <dt>{{ article.date }}</dt>
+      <dt class="article-date">{{ article.date }}</dt>
       <dd><h1 class="article-title">{{ article.title }}</h1></dd>
     </dl>
 
@@ -18,41 +18,31 @@
   </article>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const route = useRoute()
 
 const { data: article } = await useAsyncData('article', () => {
   return queryContent("article").where({_id: { $contains: route.params.slug}}).findOne()
 })
-// import FontAwesomeIcon from "@nuxtjs/fontawesome";
-//
-// export default {
-//   head() {
-//     return {
-//       title: this.title,
-//       meta: [
-//         { hid: "description", name: "description", content: this.description },
-//         {
-//           hid: "og:description",
-//           property: "og:description",
-//           content: this.description
-//         },
-//         { hid: "og:title", property: "og:title", content: this.title }
-//       ]
-//     };
-//   },
-//   async asyncData({ $content, params }) {
-//     const article = await $content("articles", params.slug || "index").fetch();
-//     return {
-//       article,
-//       title: article.title,
-//       description: article.description
-//     };
-//   }
-// };
+
+useHead({
+  title: article._rawValue.title,
+  meta: [
+    { hid: "description", name: "description", content: article._rawValue.description },
+    { hid: "og:title", property: "og:title", content: article._rawValue.title },
+    {
+      hid: "og:description",
+      property: "og:description",
+      content: article._rawValue.description
+    },
+  ]
+})
 </script>
 <style lang="scss" scoped>
 .article{
+  &-date {
+    margin-left: 8px;
+  }
   &-title {
     font-size: 2.0rem;
     margin: 8px 0px 0px 16px;

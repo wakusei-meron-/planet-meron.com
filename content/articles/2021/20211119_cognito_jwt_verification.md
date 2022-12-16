@@ -1,6 +1,6 @@
 ---
 title: Cognitoで発行したトークンをGoで検証する
-description:
+description: Cognitoの認証によってAWSの権限を利用する場合、適切なIAMロールを設定することによしなに権限の検証...
 date: 2021/11/21
 tags:
 - golang
