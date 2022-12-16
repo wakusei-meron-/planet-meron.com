@@ -1,9 +1,10 @@
 <template>
   <article class="article">
     <dl>
-      <dd>{{ article.date }}</dd>
+      <dt>{{ article.date }}</dt>
+      <dd><h1 class="article-title">{{ article.title }}</h1></dd>
     </dl>
-    <h1 class="article-title">{{ article.title }}</h1>
+
     <div v-if="!!article.image"><img :src="article.image" /></div>
 
     <div class="article-tags">
@@ -11,7 +12,9 @@
         #{{ tag }}
       </v-chip>
     </div>
-    <ContentRenderer :value="article" />
+    <div class="article-body">
+      <ContentRenderer :value="article" />
+    </div>
   </article>
 </template>
 
@@ -48,4 +51,19 @@ const { data: article } = await useAsyncData('article', () => {
 //   }
 // };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.article{
+  &-title {
+    font-size: 2.0rem;
+    margin: 8px 0px 0px 16px;
+  }
+
+  &-tags {
+    text-align: right;
+  }
+
+  &-body {
+    margin: 24px 16px;
+  }
+}
+</style>
