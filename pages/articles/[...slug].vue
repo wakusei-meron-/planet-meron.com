@@ -26,18 +26,20 @@ const { data: article } = await useAsyncData(route.path, () => {
   return queryContent("article").where({_path: { $contains: normPath}}).findOne()
 })
 
-useHead({
-  title: article._rawValue.title,
-  meta: [
-    { hid: "description", name: "description", content: article._rawValue.description },
-    { hid: "og:title", property: "og:title", content: article._rawValue.title },
-    {
-      hid: "og:description",
-      property: "og:description",
-      content: article._rawValue.description
-    },
-  ]
-})
+useContentHead(article)
+// useHead({
+//   title: article._rawValue.title
+//   ,
+//   meta: [
+//     { hid: "description", name: "description", content: article._rawValue.description },
+//     { hid: "og:title", property: "og:title", content: article._rawValue.title },
+//     {
+//       hid: "og:description",
+//       property: "og:description",
+//       content: article._rawValue.description
+//     },
+//   ]
+// })
 </script>
 <style lang="scss" scoped>
 .article{
