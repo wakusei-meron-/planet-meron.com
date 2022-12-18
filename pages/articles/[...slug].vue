@@ -22,7 +22,7 @@
 const route = useRoute()
 
 const { data: article } = await useAsyncData('article', () => {
-  return queryContent("article").where({_id: { $contains: route.params.slug}}).findOne()
+  return queryContent("article").where({_path: { $contains: route.params.slug}}).findOne()
 })
 
 useHead({
