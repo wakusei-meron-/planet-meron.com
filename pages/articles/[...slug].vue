@@ -21,8 +21,8 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const { data: article } = await useAsyncData('article', () => {
-  return queryContent("article").where({_path: { $contains: route.params.slug}}).findOne()
+const { data: article } = await useAsyncData(route.path, () => {
+  return queryContent("article").where({_path: { $contains: route.path}}).findOne()
 })
 
 useHead({
