@@ -22,7 +22,8 @@
 const route = useRoute()
 
 const { data: article } = await useAsyncData(route.path, () => {
-  return queryContent("article").where({_path: { $contains: route.path}}).findOne()
+  const normPath = route.path.replace(/\/$/, "")
+  return queryContent("article").where({_path: { $contains: normPath}}).findOne()
 })
 
 useHead({
