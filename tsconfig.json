@@ -4,7 +4,8 @@
   "compilerOptions": {
     "types": [
       "@nuxt/types",
-      "@nuxt/content"
+      "@nuxt/content",
+      "@types/aws-lambda"
     ]
   }
 }
