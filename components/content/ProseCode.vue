@@ -34,6 +34,7 @@ pre {
   font-size: 85%;
   line-height: 1.45;
   border-radius: 6px;
+  margin: 16px 0px;
 }
 
 code {

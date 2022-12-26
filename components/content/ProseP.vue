@@ -3,6 +3,6 @@
 </template>
 <style>
 p {
-  margin-bottom: 16px;
+  margin: 16px 0px;
 }
 </style>
