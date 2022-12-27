@@ -26,6 +26,7 @@
     "ogp-parser": "^0.6.0",
     "prism-themes": "^1.5.0",
     "remark-math": "^4.0.0",
+    "vue-gtag": "2.0.1",
     "vue-tweet-embed": "^2.4.0",
     "vuetify": "^3.0.3"
   },
