@@ -42,7 +42,9 @@ export default defineNuxtConfig({
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     // '~/assets/reset.css',
-    "vuetify/lib/styles/main.sass"
+    "vuetify/lib/styles/main.sass",
+    "@mdi/font/css/materialdesignicons.css"
+
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
