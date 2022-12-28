@@ -16,13 +16,13 @@ homie株式会社でエンジニアをやってる石橋([@b0941015](https://twi
 この記事は、twilio Advent Calendar 2020の18日目の記事です
 
 
-https://qiita.com/advent-calendar/2020/twilio
+<embed-link src=https://qiita.com/advent-calendar/2020/twilio></embed-link>
 
 
 
 弊社ではHOTLEADという不動産営業における支援ツールを作成しています
 
-https://homie.co.jp/#contact
+<embed-link src=https://homie.co.jp/#contact></embed-link>
 
 このHOTLEADというプロダクトでは、反響と呼ばれる問い合わせメールからお客様と会うまでのアポイントメント数を最大化するための一次対応を行っています
 
