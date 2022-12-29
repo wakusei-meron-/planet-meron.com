@@ -29,6 +29,11 @@ export default defineNuxtConfig({
       ]
     },
   },
+  nitro: {
+    prerender: {
+      routes: ['/sitemap.xml']
+    }
+  },
   vite: {
     css: {
       preprocessorOptions: {
