@@ -6,9 +6,9 @@
           <v-card-title class="text-h5">
             {{ link?.title }}
           </v-card-title>
-          <v-card-subtitle class="embed-link-subtitle">{{ hostName(props.url || props.src )}}</v-card-subtitle>
+          <v-card-subtitle>{{ hostName(props.url || props.src )}}</v-card-subtitle>
 
-          <v-card-text class="embed-link-text">{{ link?.description }}</v-card-text>
+          <v-card-text>{{ link?.description }}</v-card-text>
         </div>
 
         <v-img class="embed-link-image" :src="link?.image" cover></v-img>
@@ -39,12 +39,8 @@ const hostName = (url: string) => url.split('/')[2]
   overflow: hidden;
 
   &-image{
-    width: 200px;
+    width: 120px;
     object-fit: cover;
-  }
-
-  &-text {
-    height: 100px;
   }
 }
 </style>
