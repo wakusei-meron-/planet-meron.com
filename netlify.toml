@@ -1,3 +1,8 @@
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
 [build]
 Command = "npm run generate"
 functions = "functions/dist"
