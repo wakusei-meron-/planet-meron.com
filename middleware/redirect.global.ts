@@ -1,4 +1,5 @@
 const redirects = new Map<string, string>([
+  ["0110_mysql_check_constraint", "/articles/2023/1/0110_mysql_check_constraint"],
   ["20220918_go_faq", "/articles/2022/9/0918_go_faq"],
   ["20220321_cpaw_q21_writeup","/articles/2022/3/0321_cpaw_q21_writeup"],
   ["20220225_twilioug-vol5","/articles/2022/2/0225_twilioug-vol5"],
@@ -13,6 +14,7 @@ const redirects = new Map<string, string>([
   ["20210524_read_book_1","/articles/2021/5/0524_read_book_1"],
   ["20210514_go_embed","/articles/2021/5/0514_go_embed"],
   ["20211212_look_back_on_last_year","/articles/2021/12/1212_look_back_on_last_year"],
+  ["20211106_fuzz_testing", "/articles/2021/11/1106_fuzz_testing"],
   ["20211119_cognito_jwt_verification","/articles/2021/11/1119_cognito_jwt_verification"],
   ["20211112_cognito_user_migration","/articles/2021/11/1112_cognito_user_migration"],
   ["20211021_mfa_required_credentials","/articles/2021/10/1021_mfa_required_credentials"],

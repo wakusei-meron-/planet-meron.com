@@ -1,7 +1,7 @@
 <template>
   <article class="article">
     <dl>
-      <dt class="article-date">{{ article.date }}</dt>
+      <dt class="article-date">{{ article?.date }}</dt>
       <dd><h1 class="article-title">{{ article.title }}</h1></dd>
     </dl>
 
@@ -28,8 +28,7 @@ const { data: article } = await useAsyncData(route.path, () => {
 
 // useContentHead(article)
 useHead({
-  title: article?._rawValue?.title
-  ,
+  title: article?._rawValue?.title,
   meta: [
     { hid: "description", name: "description", content: article?._rawValue?.description },
     { hid: "og:title", property: "og:title", content: article?._rawValue?.title },
