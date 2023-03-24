@@ -1,34 +1,36 @@
 <template>
   <v-app>
-      <v-app-bar flat class="bg-grey-lighten-3 px-3">
+    <header class="app-header bg-grey-lighten-3">
+      <div class="app-header-top">
         <nuxt-link class="logo" to="/">
           <h1 class="logo">
             Planet MERON's Note
           </h1>
         </nuxt-link>
-        <v-spacer></v-spacer>
+        <v-spacer />
         <a
           v-for="icon in icons"
           :key="icon.url"
           :href="icon.url"
-          class="header-icon"
+          class="app-header-top-right"
           target="_blank"
         >
-          <v-btn icon>
+          <v-btn class="app-header-top-right-button" icon flat>
             <v-icon :icon="icon.name" color="grey-darken-1"/>
           </v-btn>
         </a>
-      </v-app-bar>
-      <v-app-bar flat class="bg-grey-lighten-3 px-3" density="compact">
+      </div>
+      <div class="app-header-bottom">
         <v-spacer />
-        <v-tabs centered class="ml-n9" color="grey-darken-2">
+        <v-tabs class="ml-n9" color="grey-darken-2">
           <v-tab v-for="item in items" :key="item.url" :to="item.url">
             {{ item.name }}
           </v-tab>
         </v-tabs>
         <v-spacer />
-      </v-app-bar>
-    <v-main>
+      </div>
+    </header>
+    <v-main class="app-main">
       <v-container>
         <v-row>
           <v-col cols="12" xs="12" sm="8">
@@ -130,6 +132,38 @@ li {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.app-header {
+  position: fixed;
+  width: 100%;
+  padding: 12px 12px 0px 12px;
+  z-index: 100;
+
+  &-top {
+    display: flex;
+    align-items: center;
+    height: 56px;
+
+    &-icon {
+      float: right;
+    }
+
+    &-right-button {
+      background-color: #eeeeee;
+    }
+  }
+
+  &-bottom {
+    display: flex;
+    align-items: end;
+    height: 56px;
+  }
+
+}
+
+.app-main {
+  margin-top: 124px;
 }
 
 </style>
