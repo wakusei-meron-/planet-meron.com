@@ -2,13 +2,13 @@
   <article class="article">
     <dl>
       <dt class="article-date">{{ article?.date }}</dt>
-      <dd><h1 class="article-title">{{ article.title }}</h1></dd>
+      <dd><h1 class="article-title">{{ article?.title }}</h1></dd>
     </dl>
 
-    <div v-if="!!article.image"><img :src="article.image" /></div>
+    <div v-if="!!article.image"><img :src="article?.image" /></div>
 
     <div class="article-tags">
-      <v-chip outlined v-for="tag in article.tags" :key="tag">
+      <v-chip outlined v-for="tag in article?.tags" :key="tag">
         #{{ tag }}
       </v-chip>
     </div>
