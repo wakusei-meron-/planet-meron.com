@@ -1,6 +1,5 @@
 ---
 title: TwilioJP-UG Online vol.5で発表してきました
-description:
 date: 2022/02/25
 tags:
 - 2022

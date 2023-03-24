@@ -1,6 +1,5 @@
 ---
 title: CpawCTFのQ21のリバースエンジニアリング問題を解く
-description:
 date: 2022/03/21
 tags:
 - 2022

@@ -1,6 +1,5 @@
 ---
 title: dockerでlocalにGlue3.0の開発環境を作る
-description:
 date: 2022/01/17
 tags:
 - 2022

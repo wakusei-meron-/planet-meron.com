@@ -1,6 +1,5 @@
 ---
 title: Colabでpip installしたライブラリを永続化する
-description:
 date: 2022/02/13
 tags:
 - 2022

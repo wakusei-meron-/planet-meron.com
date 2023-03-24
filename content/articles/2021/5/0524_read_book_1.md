@@ -1,6 +1,5 @@
 ---
 title: 紀州のドンファンの生き様
-description: 
 date: 2021/05/24
 tags:
   - 2021

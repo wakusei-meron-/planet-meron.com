@@ -1,6 +1,5 @@
 ---
 title: JYP エッセイ 何のために生きるのか
-description: 
 date: 2021/08/01
 tags:
   - 2021

@@ -1,6 +1,5 @@
 ---
 title: Go FAQ読んでみた
-description:
 date: 2022/09/18
 tags:
 - 2022

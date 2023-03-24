@@ -1,6 +1,5 @@
 ---
 title: 2020年振り返り
-description: 
 date: 2021/01/11
 tags:
   - 2020

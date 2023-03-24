@@ -1,6 +1,5 @@
 ---
 title: 音声認識システムの性能・精度について
-description:
 date: 2021/09/24
 tags:
 - 2021

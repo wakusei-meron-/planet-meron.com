@@ -1,6 +1,5 @@
 ---
 title: Juliusではじめての音声認識
-description:
 date: 2021/09/23
 tags:
 - 2021

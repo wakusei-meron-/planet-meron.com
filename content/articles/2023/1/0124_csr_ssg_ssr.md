@@ -1,6 +1,5 @@
 ---
 title: CSR, SSR, SSGとは何か・違いをよく忘れるのでメモ
-description:
 date: 2023/01/24
 tags:
   - 2023

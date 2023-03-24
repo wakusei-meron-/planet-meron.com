@@ -1,6 +1,5 @@
 ---
 title: Python, IPython, Jupyter Notebookの違いについて
-description:
 date: 2022/02/05
 tags:
 - 2022

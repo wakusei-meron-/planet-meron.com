@@ -1,6 +1,5 @@
 ---
 title: AWSのクレデンシャルにMFAを必須にする
-description:
 date: 2021/10/21
 tags:
 - 2021

@@ -1,6 +1,5 @@
 ---
 title: 2022年振り返り
-description:
 date: 2022/12/31
 tags:
   - 2022

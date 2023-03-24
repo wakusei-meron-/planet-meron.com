@@ -1,6 +1,5 @@
 ---
 title: ソフトマックス関数について
-description:
 date: 2023/03/16
 tags:
   - 2023

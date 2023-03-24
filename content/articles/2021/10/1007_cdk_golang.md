@@ -1,6 +1,5 @@
 ---
 title: GolangでCDKを使ってみる
-description:
 date: 2021/10/07
 tags:
 - 2021

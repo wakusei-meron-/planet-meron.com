@@ -1,6 +1,5 @@
 ---
 title: GoのEmbed触ってみた
-description: 
 date: 2021/05/14
 tags:
   - 2021

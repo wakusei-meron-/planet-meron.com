@@ -1,6 +1,5 @@
 ---
 title: Lambda(Go)を利用したCognitoへのユーザー移行
-description:
 date: 2021/11/12
 tags:
 - golang
