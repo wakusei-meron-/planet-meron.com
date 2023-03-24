@@ -30,6 +30,7 @@ const { data: article } = await useAsyncData(route.path, () => {
 useHead({
   title: article?._rawValue?.title,
   meta: [
+    { hid: "og:type", name: "og:type", content: "article" },
     { hid: "description", name: "description", content: article?._rawValue?.description },
     { hid: "og:title", property: "og:title", content: article?._rawValue?.title },
     { hid: "og:url", property: "og:url", content: article?._rawValue?._path+"/" },

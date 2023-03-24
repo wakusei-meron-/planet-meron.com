@@ -1,5 +1,4 @@
 const redirects = new Map<string, string>([
-  ["20230110_mysql_check_constraint", "/articles/2023/1/0110_mysql_check_constraint"],
   ["20220918_go_faq", "/articles/2022/9/0918_go_faq"],
   ["20220321_cpaw_q21_writeup","/articles/2022/3/0321_cpaw_q21_writeup"],
   ["20220225_twilioug-vol5","/articles/2022/2/0225_twilioug-vol5"],
