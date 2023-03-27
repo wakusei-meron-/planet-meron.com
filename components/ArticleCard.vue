@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col>
-      <nuxt-link :to="article._path">
+      <nuxt-link :to="article._path + '/'">
         <v-card class="article-card">
           <v-card-title class="article-card-title">
             {{ article.title }}
