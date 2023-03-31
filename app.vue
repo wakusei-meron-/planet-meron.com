@@ -156,7 +156,7 @@ li {
 
   &-bottom {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     height: 56px;
   }
 
