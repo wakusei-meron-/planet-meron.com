@@ -26,14 +26,14 @@ const { data: allArticles } = await useAsyncData('allArticles', () => {
   return queryContent('articles').only("_id").find()
 })
 
-console.log(page)
+// console.log(page)
 
 let { data: articles, refresh } = await useAsyncData(`articles-${offset}`, () => {
   return queryContent('articles')
     .only(["_path", "title", "date", "tags"])
     .sort({date: -1})
-    .limit(countPerPage)
-    .skip(offset.value)
+    // .limit(countPerPage)
+    // .skip(offset.value)
     .find()
 })
 
@@ -47,7 +47,7 @@ watch(page, () => {
     <div v-for="a in articles" :key="a._id" class="article-card">
       <article-card v-bind:article="a"></article-card>
     </div>
-    <div class="text-center">
+    <div class="text-center" v-show="false">
       <v-pagination :length="Math.ceil(allArticles.length / countPerPage)" v-model="page"></v-pagination>
     </div>
   </div>
