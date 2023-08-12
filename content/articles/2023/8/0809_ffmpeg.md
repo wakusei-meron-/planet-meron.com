@@ -1,5 +1,5 @@
 ---
-title: ffmpegの使いあkた
+title: ffmpegの使い方メモ
 date: 2023/08/09
 tags:
   - 2023
