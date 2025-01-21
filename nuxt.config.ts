@@ -2,6 +2,7 @@ export default defineNuxtConfig({
   // Target (https://go.nuxtjs.dev/config-target)
   // target: 'static',
   ssr: true,
+
   //
   // server: {
   //   port: 3005, //   host: '0.0.0.0'
@@ -29,12 +30,17 @@ export default defineNuxtConfig({
       ]
     },
   },
+
   nitro: {
     prerender: {
       routes: ['/sitemap.xml']
     }
   },
+
   vite: {
+    server: {
+      allowedHosts: ['genki-x570s-aorus-elite-ax']
+    },
     css: {
       preprocessorOptions: {
         scss: {
@@ -82,5 +88,7 @@ export default defineNuxtConfig({
       theme: 'github-light',
       preload: ['go', 'python', 'sql', 'bash', 'sh', 'shell', 'xml', 'yaml']
     }
-  }
+  },
+
+  compatibilityDate: '2025-01-21'
 })
