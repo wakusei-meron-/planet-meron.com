@@ -1,8 +1,10 @@
 <template>
   <article class="article">
     <dl>
-      <dt class="article-date">{{ article?.date }}</dt>
-      <dd><h1 class="article-title">{{ article?.title }}</h1></dd>
+      <dt class="article-date">{{ formattedDate }}</dt>
+      <dd>
+        <h1 class="article-title">{{ article?.title }}</h1>
+      </dd>
     </dl>
 
     <div v-if="!!article?.image"><img :src="article?.image" /></div>
@@ -19,36 +21,56 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute()
+import { computed } from 'vue'
+import { formatDate } from '~/utils/dateUtils'
 
-const { data: article } = await useAsyncData(route.path, () => {
-  const normPath = route.path.replace(/\/$/, "")
-  return queryContent("article").where({_path: { $contains: normPath}}).findOne()
+const path = useRoute().path
+
+const { data: article } = await useAsyncData(`articles-${path}`, () => {
+  return queryCollection('articles').path(path).first()
 })
 
-// useContentHead(article)
+const formattedDate = computed(() => {
+  if (article.value?.date) {
+    return formatDate(article.value.date)
+  }
+  return ''
+})
+
 useHead({
-  title: article?._rawValue?.title,
+  title: article?.value?.title,
   meta: [
     { hid: "og:type", name: "og:type", content: "article" },
-    { hid: "description", name: "description", content: article?._rawValue?.description },
-    { hid: "og:title", property: "og:title", content: article?._rawValue?.title },
-    { hid: "og:url", property: "og:url", content: article?._rawValue?._path+"/" },
+    {
+      hid: "description",
+      name: "description",
+      content: article?.value?.description,
+    },
+    {
+      hid: "og:title",
+      property: "og:title",
+      content: article?.value?.title,
+    },
+    {
+      hid: "og:url",
+      property: "og:url",
+      content: article?.value?.path,
+    },
     {
       hid: "og:description",
       property: "og:description",
-      content: article?._rawValue?.description
+      content: article?.value?.description,
     },
-  ]
-})
+  ],
+});
 </script>
 <style lang="scss" scoped>
-.article{
+.article {
   &-date {
     margin-left: 8px;
   }
   &-title {
-    font-size: 2.0rem;
+    font-size: 2rem;
     margin: 8px 0px 0px 16px;
   }
 

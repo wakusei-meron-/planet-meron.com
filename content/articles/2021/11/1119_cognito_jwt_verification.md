@@ -2,9 +2,9 @@
 title: Cognitoで発行したトークンをGoで検証する
 date: 2021/11/21
 tags:
-- golang
-- cognito
-- echo
+  - golang
+  - cognito
+  - echo
 ---
 
 Cognitoの認証によってAWSの権限を利用する場合、適切なIAMロールを設定することによしなに権限の検証を行ってくれる
@@ -23,21 +23,24 @@ Cognitoではユーザーブールを作成するとパブリックなJWKが取�
 
 ```json
 {
-	"keys": [{
-		"kid": "1234example=",
-		"alg": "RS256",
-		"kty": "RSA",
-		"e": "AQAB",
-		"n": "1234567890",
-		"use": "sig"
-	}, {
-		"kid": "5678example=",
-		"alg": "RS256",
-		"kty": "RSA",
-		"e": "AQAB",
-		"n": "987654321",
-		"use": "sig"
-	}]
+  "keys": [
+    {
+      "kid": "1234example=",
+      "alg": "RS256",
+      "kty": "RSA",
+      "e": "AQAB",
+      "n": "1234567890",
+      "use": "sig"
+    },
+    {
+      "kid": "5678example=",
+      "alg": "RS256",
+      "kty": "RSA",
+      "e": "AQAB",
+      "n": "987654321",
+      "use": "sig"
+    }
+  ]
 }
 ```
 
@@ -120,5 +123,6 @@ func main() {
 本番環境で利用する際にはURLをキーとして、ローカルキャッシュを利用する形にしようと思う
 
 ## 参考文献
-* [JSON Web トークンの検証](https://docs.aws.amazon.com/ja_jp/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-verifying-a-jwt.html)
-* [JWT Recipe](https://echo.labstack.com/cookbook/jwt/)
+
+- [JSON Web トークンの検証](https://docs.aws.amazon.com/ja_jp/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-verifying-a-jwt.html)
+- [JWT Recipe](https://echo.labstack.com/cookbook/jwt/)

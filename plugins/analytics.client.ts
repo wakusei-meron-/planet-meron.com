@@ -10,10 +10,10 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(
     VueGtag,
     {
-      appName: 'planet-meron.com',        // サイトの名称
+      appName: "planet-meron.com", // サイトの名称
       pageTrackerScreenviewEnabled: true, // ページトラッキングスクリーンビューを有効
-      config: { id: `G-L406DN3WJD` },     // GoogleAnalytics(GA4)の測定IDを指定する
+      config: { id: `G-L406DN3WJD` }, // GoogleAnalytics(GA4)の測定IDを指定する
     },
-    router
+    router,
   );
 });

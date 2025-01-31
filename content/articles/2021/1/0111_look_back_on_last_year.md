@@ -34,6 +34,7 @@ http://planet-meron.hatenablog.com/entry/2020/01/01/012336
 個人で勉強できる範囲はあるけれど、FBがないと正しいのか間違っているのか分からないこともあるので、この機会を最大限活用したい
 
 ### 筋トレ
+
 ある程度続けていた気もするけど年の最後の方はあまりジムにいかなかったり運動してなかった
 
 しかも記録を残していないので、どれくらいやったかわからず
@@ -45,6 +46,7 @@ http://planet-meron.hatenablog.com/entry/2020/01/01/012336
 これは大反省
 
 ### 技術
+
 スタートアップの立ち上げに携わったので、アーキテクチャを含め基礎的なことを含めて頭を悩ませ色々と勉強できた
 
 使用した技術スタックは下記の通り
@@ -57,7 +59,7 @@ http://planet-meron.hatenablog.com/entry/2020/01/01/012336
   - Swagger, Github Actions
 - 業務関連
   - Twilio, Golang, cypress, e2e, Vue, Nuxt, React Native
-  
+
 ベンチャーで働いていると価値を生むことが最重要事項になるので、技術選択や新しい技術を学ぶことは二の次で、最小の労力で最大の成果を出すことが求められる
 
 0→1のタイミングにおける開発はかなりうまくできたんじゃないかと思う
@@ -66,7 +68,6 @@ http://planet-meron.hatenablog.com/entry/2020/01/01/012336
 
 `会社として必要なこと` と `個人として好きなこと・成し遂げたいこと` を分けて今後取り組んでいく
 
-  
 ### アウトプット
 
 個人的にアウトプットは昔からの課題だったが、少しずつ改善されてきたように感じる
@@ -93,7 +94,7 @@ https://www.planet-meron.com/
 
 - [GolangでTwiMLを生成するライブラリを作った話](https://blog.homie.co.jp/entry/gotwiml-story)
 - [DIのライブラリを使って初めて幸せになれた話
-](https://www.planet-meron.com/articles/20201205_golang_di_wire)
+  ](https://www.planet-meron.com/articles/20201205_golang_di_wire)
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/rBBx05N2RYmlsc" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/genkiishibashi3/redashsql" title="Redash・SQL勉強会 ~目指せクエリ女子~ " target="_blank">Redash・SQL勉強会 ~目指せクエリ女子~ </a> </strong> from <strong><a href="https://www.slideshare.net/genkiishibashi3" target="_blank">Genki Ishibashi</a></strong> </div>
 

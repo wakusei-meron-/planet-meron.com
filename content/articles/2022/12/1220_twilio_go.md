@@ -17,22 +17,23 @@ tags:
 
 <embed-link src=https://github.com/twilio/twilio-go></embed-link>
 
-
 ## RESTクライントの生成
 
 SMSの送信やTwilioのリソースへアクセスする際には認証が必要で、RESTクライアントを作成すると容易にAPIを叩くことが可能になります
 
 以下環境変数やパラメータを指定した方法やサブアカウント、APIキーを利用したクライアントの生成方法を紹介します
 
-
 #### 環境変数を利用した初期化
+
 ```go
 // TWILIO_ACCOUNT_SIDとTWILIO_AUTH_TOKENの環境変数が認証情報として利用される
 client := twilio.NewRestClient()
 ```
+
 　
 
 #### パラメータを利用した初期化
+
 ```go
 accountSID := "ACXXXXXXXXXXXXXXX"
 authToken := "yyyyyyyyyyyyyyyyyy"
@@ -43,6 +44,7 @@ client := twilio.NewRestClientWithParams(twilio.ClientParams{
 ```
 
 #### サブアカウントの初期化
+
 ```go
 accountSID := "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 authToken := "yyyyyyyyyyyyyyyyyy"
@@ -55,6 +57,7 @@ client := twilio.NewRestClientWithParams(twilio.ClientParams{
 ```
 
 #### APIキーを利用した初期化
+
 ```go
 accountSID := "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 apiKey := "SKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
@@ -85,6 +88,7 @@ client.SetTimeout(1 * time.Second)
 RESTクライアントはAccountやFlexなど各TwilioサービスごとにAPIのインタフェースを持っていて、関数を呼び出すことで各アクションが可能です
 
 #### メッセージの送信
+
 ```go
 // 送信メッセージのパラメータの設定
 params := &openapi.CreateMessageParams{}
@@ -97,6 +101,7 @@ resp, err := client.Api.CreateMessage(params)
 ```
 
 #### Twilio Functionの作成
+
 ```go
 params := &twilioApi.CreateFunctionParams{}
 params.SetFriendlyName("My Serverless func")
@@ -151,13 +156,13 @@ for {
 	for _, record := range resp.Messages {
     fmt.Println("Body: ", *record.Body)
 	}
-	
+
 	// 次ページへの情報はUriとして返ってくるので必要な値のパース(ex. /2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Message.json?PageSize=5&Page=2&PageToken=PAIDc54f6171674c3fed47879caeed457ffe)
-	u, _ := url.Parse(resp.NextPageUri) 
+	u, _ := url.Parse(resp.NextPageUri)
 	q := u.Query()
 	currentPage = q.Get("Page")
 	nextPageToken = q.Get("PageToken")
-	
+
 	// 次ページが無くなったら処理を終了
 	if nextPageToken == "" {
 		break
@@ -184,7 +189,7 @@ func genCallToken(identity string) (string, error) {
     Secret:        env.TwilioAPIKeySecret,
     Identity:      identity,
   })
-  
+
   // アクセストークンの初期化と権限設定
   tk.AddGrant(&jwt.VoiceGrant{
       Incoming: jwt.Incoming{Allow: true},
@@ -268,6 +273,4 @@ Goを日常的に使う身としては、関数や変数名の命名規則が公
 
 https://github.com/golang/go/wiki/CodeReviewComments#initialisms
 
-
 とはいえ今後より使いやすい形になることに期待！
-

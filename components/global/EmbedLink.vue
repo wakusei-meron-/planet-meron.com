@@ -6,7 +6,9 @@
           <v-card-title class="text-h5">
             {{ link?.title }}
           </v-card-title>
-          <v-card-subtitle>{{ hostName(props.url || props.src )}}</v-card-subtitle>
+          <v-card-subtitle>{{
+            hostName(props.url || props.src)
+          }}</v-card-subtitle>
 
           <v-card-text>{{ link?.description }}</v-card-text>
         </div>
@@ -19,18 +21,20 @@
 
 <script lang="ts" setup>
 interface Link {
-  src: string
-  url: string
+  src: string;
+  url: string;
 }
 
 const props = withDefaults(defineProps<Link>(), {
   src: "",
-  url: ""
-})
+  url: "",
+});
 
-const { data: link } = await useFetch(`/.netlify/functions/embed-links?url=${props.src}`)
+const { data: link } = await useFetch(
+  `/.netlify/functions/embed-links?url=${props.src}`,
+);
 
-const hostName = (url: string) => url.split('/')[2]
+const hostName = (url: string) => url.split("/")[2];
 </script>
 
 <style scoped lang="scss">
@@ -38,7 +42,7 @@ const hostName = (url: string) => url.split('/')[2]
   margin: 16px 8px;
   overflow: hidden;
 
-  &-image{
+  &-image {
     width: 120px;
     object-fit: cover;
   }

@@ -2,12 +2,11 @@
 title: dockerでlocalにGlue3.0の開発環境を作る
 date: 2022/01/17
 tags:
-- 2022
-- glue3
+  - 2022
+  - glue3
 ---
 
 Glueでの開発を行う場合、開発エンドポイントを利用することが一般的かと思いますが、ローカルでも動作確認できるのでメモします
-
 
 ## dockerイメージの取得と起動
 
@@ -31,7 +30,7 @@ docker run -it -p 8888:8888 -p 4040:4040 -e DISABLE_SSL="true" -e AWS_PROFILE=de
 そこで、docker-compose.yamlの例を下記に示します
 
 ```yaml
-version: '3.8'
+version: "3.8"
 
 services:
   glue_jupyter:
@@ -49,7 +48,6 @@ services:
     command: /home/glue_user/jupyter/jupyter_start.sh
 ```
 
-
 ## DynamicFrameの基本的な操作
 
 glueではjsonなどスキーマが定まっていないデータに対して、カラムの方を推測するDynamicFrameというものが存在します
@@ -63,7 +61,7 @@ from pyspark import SparkContext
 from awsglue.context import GlueContext
 
 # コンテキストの初期化
-glueContext = GlueContext(SparkContext.getOrCreate()) 
+glueContext = GlueContext(SparkContext.getOrCreate())
 
 # s3からデータを取得し、ダイナミックフレームの生成
 persons = glueContext.create_dynamic_frame_from_options(connection_type = "s3", connection_options = {"paths": ["s3://awsglue-datasets/examples/us-legislators/all/persons.json"]}, format = "json")
@@ -76,8 +74,6 @@ persons = glueContext.create_dynamic_frame_from_options(connection_type = "s3", 
 細かい挙動に関してはこちらを参照
 
 https://dev.classmethod.jp/articles/aws-glue-dynamicframe/
-
-
 
 ```python
 # ダイナミックフレーム周りの情報
@@ -113,7 +109,7 @@ persons.rename_field('id', 'person_id')
 docker compose run --rm glue_jupyter /home/glue_user/spark/bin/spark-submit --py-files common.py etl.py --env dev
 ```
 
-
 ## 参考文献
-* [Developing AWS Glue ETL jobs locally using a container](https://aws.amazon.com/jp/blogs/big-data/developing-aws-glue-etl-jobs-locally-using-a-container/)
-* [Glue Docker Imageを利用したGlue Jobローカル開発をためしてみた](https://dev.classmethod.jp/articles/2022-01-29-glue-local-dockerimage/)
+
+- [Developing AWS Glue ETL jobs locally using a container](https://aws.amazon.com/jp/blogs/big-data/developing-aws-glue-etl-jobs-locally-using-a-container/)
+- [Glue Docker Imageを利用したGlue Jobローカル開発をためしてみた](https://dev.classmethod.jp/articles/2022-01-29-glue-local-dockerimage/)

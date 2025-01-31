@@ -22,19 +22,20 @@ let offset = computed(() => {
   return (page.value - 1) * countPerPage
 })
 
-const { data: allArticles } = await useAsyncData('allArticles', () => {
-  return queryContent('articles').only("_id").find()
+const { data: articlesCountData } = await useAsyncData('allArticles', () => {
+  return queryCollection('articles').count()
 })
+const articlesCount = articlesCountData?.value
 
-// console.log(page)
+console.log("articlesCount", articlesCount)
 
 let { data: articles, refresh } = await useAsyncData(`articles-${offset}`, () => {
-  return queryContent('articles')
-    .only(["_path", "title", "date", "tags"])
-    .sort({date: -1})
-    // .limit(countPerPage)
-    // .skip(offset.value)
-    .find()
+  return queryCollection('articles')
+    .select("id", "path", "title", "date", "tags")
+    .order("date", "DESC")
+    .limit(countPerPage)
+    .skip(offset.value)
+    .all()
 })
 
 watch(page, () => {
@@ -44,11 +45,11 @@ watch(page, () => {
 
 <template>
   <div class="article-card-container">
-    <div v-for="a in articles" :key="a._id" class="article-card">
+    <div v-for="a in articles" :key="a.id" class="article-card">
       <article-card v-bind:article="a"></article-card>
     </div>
-    <div class="text-center" v-show="false">
-      <v-pagination :length="Math.ceil(allArticles.length / countPerPage)" v-model="page"></v-pagination>
+    <div class="text-center">
+      <v-pagination :length="Math.ceil((articlesCount ?? 0) / countPerPage)" v-model="page"></v-pagination>
     </div>
   </div>
 </template>

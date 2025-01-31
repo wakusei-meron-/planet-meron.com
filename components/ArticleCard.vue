@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col>
-      <nuxt-link :to="article._path + '/'">
+      <nuxt-link :to="article.path">
         <v-card class="article-card">
           <v-card-title class="article-card-title">
             {{ article.title }}
@@ -9,7 +9,7 @@
           <v-card-subtitle>
             <v-row>
               <v-col>
-                {{ article.date }}
+                {{ formatDate(article.date) }}
               </v-col>
               <v-spacer />
               <v-col class="text-right">
@@ -26,15 +26,16 @@
 </template>
 
 <script>
-import {defineComponent} from "vue";
+import { defineComponent } from "vue";
+import { formatDate } from '~/utils/dateUtils'
 
 export default defineComponent({
   props: {
     article: {
       type: Object,
-      default: undefined
-    }
-  }
+      default: undefined,
+    },
+  },
 });
 </script>
 

@@ -3,9 +3,7 @@
     <nuxt-link to="/profile">
       <v-img src="/images/self_icon.png" class="sidemenu-profile-image" />
     </nuxt-link>
-    <h2 class="sidemenu-profile-name">
-      Planet MERON
-    </h2>
+    <h2 class="sidemenu-profile-name">Planet MERON</h2>
     <p class="sidemenu-profile-description">
       渋谷でIT留学後、代官山の不動産テックベンチャーの立ち上げに参画。
       ねこ・音声・統計周りに興味ありありで学術的なことにもっと関わりたい。
@@ -16,7 +14,7 @@
 
 <script>
 export default {
-  name: "SideMenu"
+  name: "SideMenu",
 };
 </script>
 

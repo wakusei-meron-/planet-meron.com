@@ -2,9 +2,9 @@
 title: GolangでCDKを使ってみる
 date: 2021/10/07
 tags:
-- 2021
-- golang
-- cdk
+  - 2021
+  - golang
+  - cdk
 ---
 
 今までAWSのインフラの管理にはterraformを使っていた
@@ -164,7 +164,7 @@ Resources:
     Type: AWS::CDK::Metadata
 ・
 ・
-・    
+・
 ```
 
 `cdk diff` を実行すると差分を確認することが可能
@@ -173,7 +173,7 @@ Resources:
 $(npm bin -g)/cdk diff
 Stack HelloCdkGoStack
 Resources
-[+] AWS::SNS::Topic MyTopic MyTopic86869434 
+[+] AWS::SNS::Topic MyTopic MyTopic86869434
 ```
 
 `cdk deploy` を実行するとCloudFormationで実際にリソースが作成されます

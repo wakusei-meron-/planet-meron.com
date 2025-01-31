@@ -2,8 +2,8 @@
 title: Lambda(Go)を利用したCognitoへのユーザー移行
 date: 2021/11/12
 tags:
-- golang
-- cognito
+  - golang
+  - cognito
 ---
 
 既にアプリケーションを運用していてセキュリティの都合上などユーザーの認証基盤としてCognitoを利用したいことってありますよね
@@ -15,7 +15,6 @@ CSVによる一括インポートとlambdaを利用した既存ログインシ�
 CSV取込とlambda取込の大きな違いは既に利用しているパスワードをそのまま利用できるか否かです
 
 CSV取込の場合、ユーザーがログイン時にパスワードを再設定する必要がある一方、lambdaを利用したユーザー移行の場合、パスワードをそのままユーザーを移行することができます
-
 
 今回はlambdaを利用したユーザー移行についての備忘録です
 
@@ -67,7 +66,7 @@ func main() {
 注意する部分としてはlambdaを起動するための起動するための権限をCognitoに与えなきゃいけない点
 
 ```yaml
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: user_migration
 
@@ -88,7 +87,7 @@ Resources:
       Runtime: go1.x
       Timeout: 300
       Description: Cognitoへのユーザー移行用の処理
-      Policies: [ AWSLambdaVPCAccessExecutionRole ]
+      Policies: [AWSLambdaVPCAccessExecutionRole]
       Role: lambda-user-migration-role
   InvokePermission:
     Type: AWS::Lambda::Permission
@@ -156,7 +155,7 @@ resource "aws_cognito_user_pool_client" "example" {
   allowed_oauth_flows = ["code", "implicit"]
   allowed_oauth_flows_user_pool_client = true
   allowed_oauth_scopes = ["email", "openid"]
-  
+
   // ログイン・ログアウト時のコールバック先のURL
   callback_urls = ["http://localhost:3000"]
   logout_urls = ["http://localhost:3000"]
@@ -200,5 +199,3 @@ lambda(go)を利用したcognitoのユーザー移行の処理をまとめまし
 WEB上に関連する情報がほとんどなくて困ったので、ここにまとめる
 
 誰かのためになれば幸いです
-
-

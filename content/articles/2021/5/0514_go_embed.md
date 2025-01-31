@@ -22,7 +22,7 @@ $ tree .
 ├── main.go
 └── sample.txt
 
-$ cat sample.txt 
+$ cat sample.txt
 this is sample text
 ```
 
@@ -43,7 +43,7 @@ func main() {
 
 ```shell
 # アプリケーションの実行
-$ go run main.go 
+$ go run main.go
 this is sample text
 ```
 
@@ -77,7 +77,7 @@ func main() {
 
 ```shell
 # アプリケーションの実行
-$ go run main.go 
+$ go run main.go
 this is sample text
 ```
 
@@ -93,7 +93,7 @@ $ tree .
 $ go build main.go
 
 // 埋め込むファイルの削除
-$ rm sample.txt 
+$ rm sample.txt
 $ tree .
 .
 ├── main
@@ -145,9 +145,8 @@ func main() {
 }
 ```
 
-
 ```shell
-$  go run main.go 
+$  go run main.go
 Key:  value
 ファイル名一覧
 file_a.txt

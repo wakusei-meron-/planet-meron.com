@@ -46,7 +46,7 @@ Wi-Fiはネットに繋がるので、デフォルトゲートウェイのIPア�
 
 ```bash
 # デフォルトゲートウェイの確認
-$ ip r 
+$ ip r
 default via 192.168.210.254 dev wlp6s0 proto dhcp metric 600
 169.254.0.0/16 dev wlp6s0 scope link metric 1000
 172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
@@ -81,7 +81,7 @@ $ sudo netplan apply
 $ ip r
 default via 192.168.210.254 dev enp5s0 proto static
 172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
-192.168.210.0/24 dev enp5s0 proto kernel scope link src 192.168.210.73$ 
+192.168.210.0/24 dev enp5s0 proto kernel scope link src 192.168.210.73$
 ```
 
 上記のように有線(enp5s0)のデフォルトゲートウェイが設定されていることが確認できる

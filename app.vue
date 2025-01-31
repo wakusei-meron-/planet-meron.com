@@ -3,9 +3,7 @@
     <header class="app-header bg-grey-lighten-3">
       <div class="app-header-top">
         <nuxt-link class="logo" to="/">
-          <h1 class="logo">
-            Planet MERON's Note
-          </h1>
+          <h1 class="logo">Planet MERON's Note</h1>
         </nuxt-link>
         <v-spacer />
         <a
@@ -16,7 +14,7 @@
           target="_blank"
         >
           <v-btn class="app-header-top-right-button" icon flat>
-            <v-icon :icon="icon.name" color="grey-darken-1"/>
+            <v-icon :icon="icon.name" color="grey-darken-1" />
           </v-btn>
         </a>
       </div>
@@ -43,15 +41,13 @@
       </v-container>
     </v-main>
     <v-footer>
-      <v-col class="text-center">
-        ©planet-meron.com
-      </v-col>
+      <v-col class="text-center"> ©planet-meron.com </v-col>
     </v-footer>
   </v-app>
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
+import { defineComponent } from "vue";
 import SideMenu from "~/components/SideMenu.vue";
 
 export default defineComponent({
@@ -60,26 +56,33 @@ export default defineComponent({
     return {
       items: [
         { name: "Blog", url: "/" },
-        { name: "Profile", url: "/profile" }
+        { name: "Profile", url: "/profile" },
       ],
       icons: [
         { name: "mdi-github", url: "https://github.com/wakusei-meron-" },
         { name: "mdi-twitter", url: "https://twitter.com/b0941015" },
         {
           name: "mdi-instagram",
-          url: "https://www.instagram.com/planet_meron/?hl=ja"
+          url: "https://www.instagram.com/planet_meron/?hl=ja",
         },
-        { name: "mdi-email", url: "mailto:b0941015@gmail.com" }
-      ]
+        { name: "mdi-email", url: "mailto:b0941015@gmail.com" },
+      ],
     };
-  }
+  },
 });
 </script>
 
 <style lang="scss">
 html {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    "Source Sans Pro",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -159,11 +162,9 @@ li {
     align-items: flex-end;
     height: 56px;
   }
-
 }
 
 .app-main {
   margin-top: 124px;
 }
-
 </style>

@@ -62,5 +62,4 @@ y_k = \frac{exp(a_k)}{\sum_{i=0}^n{exp(a_i)}} \\
 
 pytorchでもsoftmaxの計算にはこれらの処理が加えられている
 
-
 <embed-link src=https://github.com/pytorch/pytorch/blob/7541c9f8be0d46444adf6073051b6c7d0da4ac65/torch/csrc/jit/tensorexpr/operators/softmax.cpp#L17-L19><embed-link>

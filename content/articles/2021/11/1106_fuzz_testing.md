@@ -2,9 +2,9 @@
 title: Fuzz TestingとGo
 date: 2021/11/06
 tags:
-- 2021
-- golang
-- FuzzTesting
+  - 2021
+  - golang
+  - FuzzTesting
 ---
 
 昨日第3回homieエンジニア勉強会にてFuzz Testingについて発表した
@@ -184,7 +184,7 @@ go-fuzz-dep.Main(0xc000092f70, 0x1, 0x1)
         go-fuzz-dep/main.go:36 +0x1b8
 main.main()
         fuzz-testing/fuzz/go.fuzz.main/main.go:15 +0x52
-exit status 2%      
+exit status 2%
 ```
 
 エラー内容をエラー内容を見ると負の値で数字の前に0が入るパターンが `strconv.Atoi` でエラーにならないが、入力と一致してないケースとしてpanicになっている

@@ -2,18 +2,16 @@
 title: TwilioJP-UG Online vol.5で発表してきました
 date: 2022/02/25
 tags:
-- 2022
-- twilio
-- 勉強会
+  - 2022
+  - twilio
+  - 勉強会
 ---
 
 先日行われたTwilioJP-UGのミートアップに参加して、久々に外部勉強会で発表してきました
 
 https://twiliojp-ug.doorkeeper.jp/events/133049
 
-
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/1qO0jqqXGzDVcZ" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/genkiishibashi3/twilio-flex-251282309" title="Twilio flex導入までの背景と苦労した話" target="_blank">Twilio flex導入までの背景と苦労した話</a> </strong> from <strong><a href="//www.slideshare.net/genkiishibashi3" target="_blank">Genki Ishibashi</a></strong> </div>
-
 
 元々弊社のプロダクトでTwilioを利用していたのですが、そのノウハウを2021年のTwilioアドベントカレンダーで書いた所、Twilio Flex賞を受賞させていただき、お声をかけていただきました。
 
@@ -24,8 +22,6 @@ https://twiliojp-ug.doorkeeper.jp/events/133049
 やはり、技術を核としている会社は考え方や組織文化が全然違うし、非常に魅力的に映った
 
 自分もそんな組織を作っていきたいし、そんな考え方の人が日本の会社にももっと浸透していけばいいなと思った
-
-
 
 また個人的にも外部の勉強会発表みたいにアウトプットが予期しない形でつながっていくのは自分のやりたかったことに非常に通ずる
 

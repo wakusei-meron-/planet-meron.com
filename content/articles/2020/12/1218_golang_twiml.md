@@ -8,17 +8,13 @@ tags:
   - Twilio
 ---
 
-
 はじめまして
 
 homie株式会社でエンジニアをやってる石橋([@b0941015](https://twitter.com/b0941015))と申します
 
 この記事は、twilio Advent Calendar 2020の18日目の記事です
 
-
 <embed-link src=https://qiita.com/advent-calendar/2020/twilio></embed-link>
-
-
 
 弊社ではHOTLEADという不動産営業における支援ツールを作成しています
 
@@ -29,9 +25,6 @@ homie株式会社でエンジニアをやってる石橋([@b0941015](https://twi
 エンジニアリングとコールセンターの力を最大限発揮し、お客様にも導入したクライアント様にもメリットを提供できるようなプロダクト開発に日々取り組んでいます
 
 今回はコールセンターを構築するにあたってTwilioの導入を検討していて、その開発の中でGolang用のTwiMLを生成するライブラリを作った話をしたいと思います
-
-
-
 
 ## Twilio・TwiMLとはどういうものか
 
@@ -71,6 +64,7 @@ TwiMLでは `<Response>` タグでTwilioにやってほしい指示内容を囲�
   <Say voice="alice">Hello world!</Say>
 </Response>
 ```
+
 ```xml
 <!-- メッセージを読み上げた後に電話をつなぐ -->
 <Response>
@@ -83,8 +77,6 @@ TwiMLについて他にどんなことができるのか、より詳細な説明
 
 https://jp.twilio.com/docs/voice/twiml
 
-
-
 ## GolangでTwiMLを生成するライブラリを作成した経緯
 
 ### `encoding/xml` を使ったTwiMLの生成
@@ -96,6 +88,7 @@ Golangには `encoding/xml` というXMLを扱うためのパッケージが公�
 それは構造体の中にタグ名や属性・データ内容を定義することが可能なので、タグと構造体の関係がイメージしづらいという問題があるからです
 
 以下、 `encoding/xml` を使ったXML出力サンプルです
+
 ```go
 type (
 	VoiceResponse struct {
@@ -124,6 +117,7 @@ func main() {
 	fmt.Println(string(buf))
 }
 ```
+
 ```xml
 <Response>
   <Say voice="alice">hello world</Say>
@@ -131,7 +125,6 @@ func main() {
 ```
 
 [https://play.golang.org/p/3gQ8NwE9rda]
-
 
 要素の名前を構造体のタグやフィールドどちらでも記述できるというのは柔軟な表現が可能である一方、両方記述された場合どちらが優先されるかわからないなどの複雑さがあります
 
@@ -149,19 +142,15 @@ https://jp.twilio.com/docs/libraries
 
 https://github.com/twilio
 
-
 C#, Java, Node.js, PHP , Python , Rubyと様々な言語に対応していますが、弊社がサーバーサイドで利用しているGolangがありませんでした
 
 OSSを探してみてもAPIクライアントは存在していますが、TwiMLを生成するものは数が少なく、かつ直近のメンテがされていない状況でした
-
 
 ## ライブラリgotwimlの紹介
 
 そこで、TwiMLをGolangで容易に扱うことができるようにgotwimlというSDKを作成しました
 
-
 https://github.com/homie-dev/gotwiml
-
 
 こちらでは、各要素と属性・文字データを必要最小限かつ、直感的に扱えることを重視して設計しています
 
@@ -176,6 +165,7 @@ func main() {
 	fmt.Println(xml)
 }
 ```
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
@@ -184,7 +174,6 @@ func main() {
 ```
 
 [https://play.golang.org/p/NhThQxdMaR5]
-
 
 メソッドで要素名を指定し、第一引数で文字データを渡し、必要な属性をその後に定義していきます
 これによって構造体を意識することなく、メソッドチェーンで必要な要素のみを渡してTwiMLを作成することができます
@@ -195,10 +184,12 @@ func main() {
 // 生成例1:  "hello world"のメッセージを読み上げる
 resp := twiml.NewVoiceResponse().Say("hello world!")
 ```
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Response><Say>hello world!</Say></Response>
 ```
+
 ```go
 // 生成例2:  イギリス英語のアクセント、かつアリスの声で、"hello world!"のメッセージを読み上げる
 resp := twiml.NewVoiceResponse().
@@ -207,6 +198,7 @@ resp := twiml.NewVoiceResponse().
 		attr.Language(language.EnGb),
 	)
 ```
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Response><Say voice="alice" language="en-GB">hello world!</Say></Response>

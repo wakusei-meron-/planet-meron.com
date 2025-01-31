@@ -1,6 +1,11 @@
+<script setup lang="ts">
+  const { data: profile } = await useAsyncData('profile', () => {
+    return queryCollection('profile').first()
+  })
+</script>
 <template>
   <article class="profile">
-    <ContentDoc path="/info/profile" />
+    <ContentRenderer :value="profile" />
   </article>
 </template>
 

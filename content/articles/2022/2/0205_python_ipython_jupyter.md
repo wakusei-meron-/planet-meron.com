@@ -2,10 +2,10 @@
 title: Python, IPython, Jupyter Notebookの違いについて
 date: 2022/02/05
 tags:
-- 2022
-- python
-- ipython
-- jupyter_notebook
+  - 2022
+  - python
+  - ipython
+  - jupyter_notebook
 ---
 
 jupyter notebookに関連する知識が曖昧だと調べる時に必要な情報が引っかからないことがある
@@ -32,6 +32,7 @@ Jupyter Notebook: IPython以外の言語もブラウザ上で動作するため�
 ```
 
 ## ラインコマンド例
+
 ```
 * %lsmagic：現在利用可能なマジックコマンドの一覧を表示してくれます。
 * %magic：マジックコマンドの情報を表示してくれます。
@@ -63,5 +64,6 @@ Jupyter Notebook: IPython以外の言語もブラウザ上で動作するため�
 ```
 
 ## 参考文献
-* [公式ドキュメント~Built-in magic commands~](https://ipython.readthedocs.io/en/stable/interactive/magics.html)
-https://miyukimedaka.com/2019/07/28/blog-0083-jupyter-notebook-magic-command-explanation/
+
+- [公式ドキュメント~Built-in magic commands~](https://ipython.readthedocs.io/en/stable/interactive/magics.html)
+  https://miyukimedaka.com/2019/07/28/blog-0083-jupyter-notebook-magic-command-explanation/

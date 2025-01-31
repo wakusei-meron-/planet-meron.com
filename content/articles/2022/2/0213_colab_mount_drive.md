@@ -2,9 +2,9 @@
 title: Colabでpip installしたライブラリを永続化する
 date: 2022/02/13
 tags:
-- 2022
-- jupyter_notebook
-- colab
+  - 2022
+  - jupyter_notebook
+  - colab
 ---
 
 colabでセッションを初期化するとpipインストールしたライブラリが消えてしまい、毎回インストールする必要があります
@@ -31,15 +31,14 @@ nb_path = '/content/notebooks'
 target = '/content/drive/My Drive/Colab Notebooks/packages'
 if os.path.realpath(nb_path) != target:
   os.symlink(target, nb_path)
-  
+
 # ライブラリのパスを通す
 if nb_path not in sys.path:
   sys.path.insert(0, nb_path)
-  
+
 print(sys.path)
 # ['/content/notebooks', ...] とパスが通っていればOK
 ```
-
 
 ## ②マウントしたフォルダにライブラリをインストール
 

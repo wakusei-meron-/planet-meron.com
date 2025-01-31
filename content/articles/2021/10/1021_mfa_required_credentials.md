@@ -2,9 +2,9 @@
 title: AWSのクレデンシャルにMFAを必須にする
 date: 2021/10/21
 tags:
-- 2021
-- golang
-- iam
+  - 2021
+  - golang
+  - iam
 ---
 
 AWSのログイン画面に対してMFAを導入してる一方、クレデンシャルに対してノーガードの人が多いのではないだろうか
@@ -13,7 +13,7 @@ AWSのログイン画面に対してMFAを導入してる一方、クレデン�
 
 ## 前提条件
 
-* MFAの設定がされている
+- MFAの設定がされている
 
 ## MFAを矯正するポリシー
 
@@ -23,120 +23,113 @@ IAMユーザーに対してMFAの設定を強制化するには下記のポリ�
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "AllowViewAccountInfo",
-            "Effect": "Allow",
-            "Action": [
-                "iam:GetAccountPasswordPolicy",
-                "iam:GetAccountSummary",
-                "iam:ListVirtualMFADevices"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Sid": "AllowManageOwnPasswords",
-            "Effect": "Allow",
-            "Action": [
-                "iam:ChangePassword",
-                "iam:GetUser"
-            ],
-            "Resource": "arn:aws:iam::*:user/${aws:username}"
-        },
-        {
-            "Sid": "AllowManageOwnAccessKeys",
-            "Effect": "Allow",
-            "Action": [
-                "iam:CreateAccessKey",
-                "iam:DeleteAccessKey",
-                "iam:ListAccessKeys",
-                "iam:UpdateAccessKey"
-            ],
-            "Resource": "arn:aws:iam::*:user/${aws:username}"
-        },
-        {
-            "Sid": "AllowManageOwnSigningCertificates",
-            "Effect": "Allow",
-            "Action": [
-                "iam:DeleteSigningCertificate",
-                "iam:ListSigningCertificates",
-                "iam:UpdateSigningCertificate",
-                "iam:UploadSigningCertificate"
-            ],
-            "Resource": "arn:aws:iam::*:user/${aws:username}"
-        },
-        {
-            "Sid": "AllowManageOwnSSHPublicKeys",
-            "Effect": "Allow",
-            "Action": [
-                "iam:DeleteSSHPublicKey",
-                "iam:GetSSHPublicKey",
-                "iam:ListSSHPublicKeys",
-                "iam:UpdateSSHPublicKey",
-                "iam:UploadSSHPublicKey"
-            ],
-            "Resource": "arn:aws:iam::*:user/${aws:username}"
-        },
-        {
-            "Sid": "AllowManageOwnGitCredentials",
-            "Effect": "Allow",
-            "Action": [
-                "iam:CreateServiceSpecificCredential",
-                "iam:DeleteServiceSpecificCredential",
-                "iam:ListServiceSpecificCredentials",
-                "iam:ResetServiceSpecificCredential",
-                "iam:UpdateServiceSpecificCredential"
-            ],
-            "Resource": "arn:aws:iam::*:user/${aws:username}"
-        },
-        {
-            "Sid": "AllowManageOwnVirtualMFADevice",
-            "Effect": "Allow",
-            "Action": [
-                "iam:CreateVirtualMFADevice",
-                "iam:DeleteVirtualMFADevice"
-            ],
-            "Resource": "arn:aws:iam::*:mfa/${aws:username}"
-        },
-        {
-            "Sid": "AllowManageOwnUserMFA",
-            "Effect": "Allow",
-            "Action": [
-                "iam:DeactivateMFADevice",
-                "iam:EnableMFADevice",
-                "iam:ListMFADevices",
-                "iam:ResyncMFADevice"
-            ],
-            "Resource": "arn:aws:iam::*:user/${aws:username}"
-        },
-        {
-            "Sid": "DenyAllExceptListedIfNoMFA",
-            "Effect": "Deny",
-            "NotAction": [
-                "iam:CreateVirtualMFADevice",
-                "iam:EnableMFADevice",
-                "iam:GetUser",
-                "iam:ListMFADevices",
-                "iam:ListVirtualMFADevices",
-                "iam:ResyncMFADevice",
-                "sts:GetSessionToken"
-            ],
-            "Resource": "*",
-            "Condition": {
-                "BoolIfExists": {
-                    "aws:MultiFactorAuthPresent": "false"
-                }
-            }
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowViewAccountInfo",
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetAccountPasswordPolicy",
+        "iam:GetAccountSummary",
+        "iam:ListVirtualMFADevices"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "AllowManageOwnPasswords",
+      "Effect": "Allow",
+      "Action": ["iam:ChangePassword", "iam:GetUser"],
+      "Resource": "arn:aws:iam::*:user/${aws:username}"
+    },
+    {
+      "Sid": "AllowManageOwnAccessKeys",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateAccessKey",
+        "iam:DeleteAccessKey",
+        "iam:ListAccessKeys",
+        "iam:UpdateAccessKey"
+      ],
+      "Resource": "arn:aws:iam::*:user/${aws:username}"
+    },
+    {
+      "Sid": "AllowManageOwnSigningCertificates",
+      "Effect": "Allow",
+      "Action": [
+        "iam:DeleteSigningCertificate",
+        "iam:ListSigningCertificates",
+        "iam:UpdateSigningCertificate",
+        "iam:UploadSigningCertificate"
+      ],
+      "Resource": "arn:aws:iam::*:user/${aws:username}"
+    },
+    {
+      "Sid": "AllowManageOwnSSHPublicKeys",
+      "Effect": "Allow",
+      "Action": [
+        "iam:DeleteSSHPublicKey",
+        "iam:GetSSHPublicKey",
+        "iam:ListSSHPublicKeys",
+        "iam:UpdateSSHPublicKey",
+        "iam:UploadSSHPublicKey"
+      ],
+      "Resource": "arn:aws:iam::*:user/${aws:username}"
+    },
+    {
+      "Sid": "AllowManageOwnGitCredentials",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateServiceSpecificCredential",
+        "iam:DeleteServiceSpecificCredential",
+        "iam:ListServiceSpecificCredentials",
+        "iam:ResetServiceSpecificCredential",
+        "iam:UpdateServiceSpecificCredential"
+      ],
+      "Resource": "arn:aws:iam::*:user/${aws:username}"
+    },
+    {
+      "Sid": "AllowManageOwnVirtualMFADevice",
+      "Effect": "Allow",
+      "Action": ["iam:CreateVirtualMFADevice", "iam:DeleteVirtualMFADevice"],
+      "Resource": "arn:aws:iam::*:mfa/${aws:username}"
+    },
+    {
+      "Sid": "AllowManageOwnUserMFA",
+      "Effect": "Allow",
+      "Action": [
+        "iam:DeactivateMFADevice",
+        "iam:EnableMFADevice",
+        "iam:ListMFADevices",
+        "iam:ResyncMFADevice"
+      ],
+      "Resource": "arn:aws:iam::*:user/${aws:username}"
+    },
+    {
+      "Sid": "DenyAllExceptListedIfNoMFA",
+      "Effect": "Deny",
+      "NotAction": [
+        "iam:CreateVirtualMFADevice",
+        "iam:EnableMFADevice",
+        "iam:GetUser",
+        "iam:ListMFADevices",
+        "iam:ListVirtualMFADevices",
+        "iam:ResyncMFADevice",
+        "sts:GetSessionToken"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "BoolIfExists": {
+          "aws:MultiFactorAuthPresent": "false"
         }
-    ]
+      }
+    }
+  ]
 }
 ```
 
 ## cliからMFA認証をする
 
 `sts` の `get-session` に対して `--serial-number` でmfaのARNを指定し、MFAの値を `--token-code` に指定する
-
 
 ```shell
 # mfaを指定したセッショントークンの取得
