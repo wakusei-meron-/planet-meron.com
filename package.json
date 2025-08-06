@@ -44,6 +44,7 @@
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/google-analytics": "^2.4.0",
+    "@rollup/rollup-darwin-x64": "^4.46.2",
     "@types/aws-lambda": "^8.10.109",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^29.0.0",

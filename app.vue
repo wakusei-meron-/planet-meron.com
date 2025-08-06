@@ -1,27 +1,40 @@
 <template>
   <v-app>
-    <header class="app-header bg-grey-lighten-3">
+    <header class="app-header" :class="{ 'app-header--scrolled': isScrolled }">
       <div class="app-header-top">
         <nuxt-link class="logo" to="/">
           <h1 class="logo">Planet MERON's Note</h1>
         </nuxt-link>
         <v-spacer />
-        <a
-          v-for="icon in icons"
-          :key="icon.url"
-          :href="icon.url"
-          class="app-header-top-right"
-          target="_blank"
-        >
-          <v-btn class="app-header-top-right-button" icon flat>
-            <v-icon :icon="icon.name" color="grey-darken-1" />
+        <div class="app-header-social">
+          <v-btn
+            v-for="icon in icons"
+            :key="icon.url"
+            :href="icon.url"
+            target="_blank"
+            icon
+            variant="text"
+            size="small"
+            class="app-header-social-button"
+          >
+            <v-icon :icon="icon.name" />
           </v-btn>
-        </a>
+        </div>
       </div>
       <div class="app-header-bottom">
         <v-spacer />
-        <v-tabs class="ml-n9" color="grey-darken-2">
-          <v-tab v-for="item in items" :key="item.url" :to="item.url">
+        <v-tabs 
+          v-model="activeTab" 
+          color="primary"
+          slider-color="primary"
+          class="app-header-tabs"
+        >
+          <v-tab 
+            v-for="item in items" 
+            :key="item.url" 
+            :to="item.url"
+            :value="item.url"
+          >
             {{ item.name }}
           </v-tab>
         </v-tabs>
@@ -43,6 +56,20 @@
     <v-footer>
       <v-col class="text-center"> ©planet-meron.com </v-col>
     </v-footer>
+    
+    <!-- スクロールトップボタン -->
+    <v-fab
+      v-show="showScrollTop"
+      app
+      appear
+      bottom
+      end
+      size="small"
+      color="primary"
+      icon="mdi-chevron-up"
+      class="scroll-top-button"
+      @click="scrollToTop"
+    />
   </v-app>
 </template>
 
@@ -67,12 +94,41 @@ export default defineComponent({
         },
         { name: "mdi-email", url: "mailto:b0941015@gmail.com" },
       ],
+      isScrolled: false,
+      activeTab: null,
+      showScrollTop: false,
     };
   },
+  mounted() {
+    this.activeTab = this.$route.path;
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  watch: {
+    '$route.path'(newPath) {
+      this.activeTab = newPath === '/' ? '/' : newPath;
+    }
+  },
+  methods: {
+    handleScroll() {
+      this.isScrolled = window.scrollY > 50;
+      this.showScrollTop = window.scrollY > 300;
+    },
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }
 });
 </script>
 
 <style lang="scss">
+@use '~/assets/scss/colors' as *;
+
 html {
   font-family:
     "Source Sans Pro",
@@ -135,25 +191,60 @@ li {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .app-header {
   position: fixed;
   width: 100%;
-  padding: 12px 12px 0px 12px;
+  padding: 16px 24px 0px 24px;
   z-index: 100;
+  background: white;
+  border-bottom: 1px solid $border-light;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px $shadow-sm;
+  
+  &--scrolled {
+    padding: 8px 24px 0px 24px;
+    box-shadow: 0 4px 12px $shadow-md;
+    
+    .app-header-top {
+      height: 48px;
+    }
+    
+    .app-header-bottom {
+      height: 48px;
+    }
+    
+    .logo {
+      width: 250px;
+      height: 42px;
+    }
+  }
 
   &-top {
     display: flex;
     align-items: center;
     height: 56px;
-
-    &-icon {
-      float: right;
-    }
-
-    &-right-button {
-      background-color: #eeeeee;
+    transition: height 0.3s ease;
+  }
+  
+  &-social {
+    display: flex;
+    gap: 4px;
+    
+    &-button {
+      color: $text-secondary;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        color: $primary;
+        transform: translateY(-2px);
+      }
     }
   }
 
@@ -161,10 +252,85 @@ li {
     display: flex;
     align-items: flex-end;
     height: 56px;
+    transition: height 0.3s ease;
+  }
+  
+  &-tabs {
+    :deep(.v-tab) {
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: none;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        color: $primary;
+      }
+    }
+    
+    :deep(.v-tab--active) {
+      font-weight: 600;
+    }
   }
 }
 
 .app-main {
-  margin-top: 124px;
+  margin-top: 128px;
+  background-color: $bg-secondary;
+  min-height: calc(100vh - 128px);
+}
+
+.v-footer {
+  background-color: $gray-800 !important;
+  color: $white;
+  padding: 24px 0;
+  margin-top: 48px;
+}
+
+.scroll-top-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+// ページ遷移アニメーション
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.3s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+// ローディングアニメーション
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    $bg-secondary 0%,
+    $bg-tertiary 50%,
+    $bg-secondary 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
 }
 </style>

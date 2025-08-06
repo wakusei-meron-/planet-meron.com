@@ -14,6 +14,8 @@ export default defineNuxtConfig({
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+    layoutTransition: { name: 'layout', mode: 'out-in' },
     head: {
       title: "Planet Meron's Note",
       meta: [
