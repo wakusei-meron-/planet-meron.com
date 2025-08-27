@@ -17,5 +17,5 @@ export default defineContentConfig({
       type: "page",
       source: "info/profile.md",
     })),
-  },
+  }
 });

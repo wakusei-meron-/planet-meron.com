@@ -1,0 +1,64 @@
+// Shiki github-dark theme overrides
+// Ensure github-dark theme background is applied
+
+// Main pre elements with Shiki classes
+pre.shiki,
+pre.shiki-themes,
+pre.github-dark,
+pre.shiki.github-dark,
+pre.shiki.shiki-themes.github-dark {
+  background-color: #161b22 !important;
+  color: #c9d1d9 !important;
+}
+
+// Inline code elements
+code:not(pre code) {
+  background-color: rgba(110, 118, 129, 0.4);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  color: #c9d1d9;
+}
+
+// Ensure proper styling in article context
+.article-body {
+  pre.shiki {
+    background-color: #161b22 !important;
+    border: 1px solid #30363d;
+    
+    code {
+      background: transparent;
+      color: #c9d1d9;
+    }
+  }
+  
+  // Override any theme conflicts
+  :deep(pre.shiki) {
+    background-color: #161b22 !important;
+  }
+}
+
+// CSS Variables for Shiki
+:root {
+  --shiki-color-text: #c9d1d9;
+  --shiki-color-background: #161b22;
+  --shiki-token-constant: #79c0ff;
+  --shiki-token-string: #a5d6ff;
+  --shiki-token-comment: #8b949e;
+  --shiki-token-keyword: #ff7b72;
+  --shiki-token-parameter: #ffa657;
+  --shiki-token-function: #d2a8ff;
+  --shiki-token-string-expression: #a5d6ff;
+  --shiki-token-punctuation: #c9d1d9;
+  --shiki-token-link: #a5d6ff;
+}
+
+// Apply to all Shiki containers
+.shiki-container,
+.prose pre,
+[class*="language-"] {
+  &.shiki {
+    background-color: var(--shiki-color-background, #161b22) !important;
+    color: var(--shiki-color-text, #c9d1d9) !important;
+  }
+}

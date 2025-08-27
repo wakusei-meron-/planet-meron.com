@@ -338,25 +338,24 @@ useHead({
         font-style: italic;
       }
       
+      // インラインコード
       code {
         background: $bg-tertiary;
         padding: 0.2em 0.4em;
         border-radius: 3px;
         font-size: 0.9em;
         color: $primary-dark;
+        font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
       }
       
+      // コードブロック（ProseCodeコンポーネントでスタイリングされるため最小限に）
       pre {
-        background: $gray-900;
-        padding: 1.5em;
-        border-radius: 8px;
-        overflow-x: auto;
-        margin: 1.5em 0;
+        margin: 0;
         
         code {
           background: none;
-          color: $white;
           padding: 0;
+          color: inherit;
         }
       }
       

@@ -83,6 +83,7 @@ export default defineNuxtConfig({
     // '~/assets/reset.css',
     "vuetify/lib/styles/main.sass",
     "@mdi/font/css/materialdesignicons.css",
+    "~/assets/scss/shiki-github-dark.scss",
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -114,19 +115,8 @@ export default defineNuxtConfig({
           searchDepth: 2,
         },
         highlight: {
-          // Theme used in all color schemes.
-          theme: "github-light",
-          preload: [
-            "go",
-            "python",
-            "sql",
-            "bash",
-            "sh",
-            "shell",
-            "xml",
-            "yaml",
-          ],
-          langs: ["go", "python", "sql", "bash", "sh", "shell", "xml", "yaml"],
+          theme: "github-dark",
+          langs: ["go", "python", "sql", "bash", "sh", "shell", "xml", "yaml", "js", "ts", "vue", "css", "html", "json", "javascript", "typescript"],
         },
       },
     },
