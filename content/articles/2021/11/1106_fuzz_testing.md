@@ -2,7 +2,6 @@
 title: Fuzz TestingとGo
 date: 2021/11/06
 tags:
-  - 2021
   - golang
   - FuzzTesting
 ---

@@ -2,7 +2,6 @@
 title: Juliusではじめての音声認識
 date: 2021/09/23
 tags:
-  - 2021
   - 音声認識
   - Julius
 ---

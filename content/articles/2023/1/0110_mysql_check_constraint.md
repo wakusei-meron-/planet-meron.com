@@ -2,7 +2,6 @@
 title: MySQL8.0から追加されたCHECK制約の使い方
 date: 2023/01/10
 tags:
-  - 2023
   - MySQL
   - SQL
 ---

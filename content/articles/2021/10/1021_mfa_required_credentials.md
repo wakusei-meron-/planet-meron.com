@@ -2,7 +2,6 @@
 title: AWSのクレデンシャルにMFAを必須にする
 date: 2021/10/21
 tags:
-  - 2021
   - golang
   - iam
 ---

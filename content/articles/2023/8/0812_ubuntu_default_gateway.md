@@ -2,7 +2,6 @@
 title: 固定IPにするとネットワークに繋がらない問題
 date: 2023/08/12
 tags:
-  - 2023
   - ubuntu
   - network
 ---

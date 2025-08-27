@@ -2,7 +2,6 @@
 title: CSR, SSR, SSGとは何か・違いをよく忘れるのでメモ
 date: 2023/01/24
 tags:
-  - 2023
   - Frontend
   - Web
 ---

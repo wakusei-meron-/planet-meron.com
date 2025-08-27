@@ -2,7 +2,6 @@
 title: GoのEmbed触ってみた
 date: 2021/05/14
 tags:
-  - 2021
   - golang
   - 1.16
 ---

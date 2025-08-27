@@ -2,7 +2,6 @@
 title: Go FAQ読んでみた
 date: 2022/09/18
 tags:
-  - 2022
   - Golang
 ---
 

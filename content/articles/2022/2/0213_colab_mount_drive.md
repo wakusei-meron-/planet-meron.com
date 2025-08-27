@@ -2,7 +2,6 @@
 title: Colabでpip installしたライブラリを永続化する
 date: 2022/02/13
 tags:
-  - 2022
   - jupyter_notebook
   - colab
 ---

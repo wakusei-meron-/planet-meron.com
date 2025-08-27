@@ -2,7 +2,6 @@
 title: GolangでCDKを使ってみる
 date: 2021/10/07
 tags:
-  - 2021
   - golang
   - cdk
 ---

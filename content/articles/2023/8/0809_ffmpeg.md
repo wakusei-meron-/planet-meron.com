@@ -2,7 +2,6 @@
 title: ffmpegの使い方メモ
 date: 2023/08/09
 tags:
-  - 2023
   - ffmpeg
 ---
 

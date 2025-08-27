@@ -2,7 +2,6 @@
 title: 遂にTwilio公式にサポートされたGoのSDKを使い倒してみる！
 date: 2022/12/18
 tags:
-  - 2022
   - Golang
   - Twilio
 ---
