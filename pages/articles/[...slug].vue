@@ -387,6 +387,7 @@ useHead({
         color: $primary;
         text-decoration: underline;
         transition: color 0.2s ease;
+        overflow-wrap: break-word;
         
         &:hover {
           color: $primary-dark;
