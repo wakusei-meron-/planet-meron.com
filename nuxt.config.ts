@@ -83,7 +83,7 @@ export default defineNuxtConfig({
     // '~/assets/reset.css',
     "vuetify/lib/styles/main.sass",
     "@mdi/font/css/materialdesignicons.css",
-    "~/assets/scss/shiki-github-dark.scss",
+    "~/assets/scss/shiki-github-dark.scss", // 公式のドキュメントどおりに設定しても動かないので手動インポート
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
