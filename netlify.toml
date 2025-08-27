@@ -1,5 +1,5 @@
 [build]
-NODE_VERSION = "22.9.0"
+NODE_VERSION = "22.12.0"
 Command = "yarn run generate"
 functions = "functions/dist"
 publish = "dist/"
