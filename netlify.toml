@@ -5,3 +5,8 @@ publish = "dist"
 [build.environment]
 NODE_VERSION = "22.12.0"
 NITRO_PRESET = "netlify"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
