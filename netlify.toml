@@ -1,5 +1,4 @@
 [build]
 NODE_VERSION = "22.12.0"
 Command = "npm run generate"
-functions = "functions/dist"
-publish = "dist/"
+publish = ".output/public"

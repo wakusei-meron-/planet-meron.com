@@ -7,9 +7,8 @@
     "dev": "nuxt dev --host 0.0.0.0",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate && netlify-lambda build functions/api",
+    "generate": "nuxt generate",
     "test": "jest",
-    "dev:functions": "netlify-lambda serve functions/api",
     "format": "prettier --write ."
   },
   "resolutions": {
