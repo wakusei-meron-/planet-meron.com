@@ -4,9 +4,10 @@ publish = "dist"
 
 [build.environment]
 NODE_VERSION = "22.12.0"
-NITRO_PRESET = "netlify"
+# NITRO_PRESET = "netlify" # SSGとの相性問題のためコメントアウト
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = true  # 強制的にリダイレクト
