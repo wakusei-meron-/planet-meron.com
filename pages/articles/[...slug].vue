@@ -10,10 +10,24 @@
       </dd>
     </dl>
 
-    <div v-if="!!article?.image" class="article-hero">
+    <!-- <div v-if="!!article?.image" class="article-hero">
       <ClientOnly>
         <v-img 
           :src="article?.image" 
+          max-height="400"
+          cover
+          class="article-hero-image"
+        />
+        <template #fallback>
+          <div style="height: 400px; background-color: #f5f5f5;"></div>
+        </template>
+      </ClientOnly>
+    </div> -->
+    <div v-if="!!article?.image" class="article-hero">
+      <ClientOnly>
+        <v-img
+          v-if="isClient" 
+          :src="article?.image"
           max-height="400"
           cover
           class="article-hero-image"
@@ -50,8 +64,15 @@
       </nav>
     </div>
 
-    <div class="article-body">
+    <!-- <div class="article-body">
       <ContentRenderer :value="article" />
+    </div> -->
+    <div class="article-body" v-if="article">
+      <ContentRenderer :value="article" />
+    </div>
+    <div v-else class="article-body">
+      <!-- ごく簡単なフォールバック -->
+      <p>Loading...</p>
     </div>
 
     <div class="article-share">
@@ -108,9 +129,25 @@ import { formatDate } from '~/utils/dateUtils'
 const path = useRoute().path
 const config = useRuntimeConfig()
 
-const { data: article } = await useAsyncData(`articles-${path}`, () => {
-  return queryCollection('articles').path(path).first()
-})
+// const { data: article } = await useAsyncData(`articles-${path}`, () => {
+//   return queryCollection('articles').path(path).first()
+// })
+const { data: article } = await useAsyncData(
+  `articles-${path}`,
+  () => queryCollection('articles').path(path).first(),
+  {
+    // SSRリロード時の未定義参照を防ぐための初期値
+    default: () => ({
+      title: '',
+      description: '',
+      image: null,
+      tags: [],
+      body: null
+    })
+  }
+)
+ 
+
 
 const formattedDate = computed(() => {
   if (article.value?.date) {
@@ -126,22 +163,30 @@ const fullUrl = computed(() => {
   return `${config.public.siteUrl || 'https://planet-meron.com'}${path}`
 })
 
-const toc = ref([])
+// const toc = ref([])
+type TocItem = { id: string; text: string; depth: 2 | 3 }
+const toc = ref<TocItem[]>([])
 const copied = ref(false)
+const isClient = ref(false)
+
 
 onMounted(async () => {
   await nextTick()
+  isClient.value = true
   generateToc()
 })
 
 const generateToc = () => {
+  // const headings = document.querySelectorAll('.article-body h2, .article-body h3')
+  // toc.value = Array.from(headings).map((heading, index) => {
   const headings = document.querySelectorAll('.article-body h2, .article-body h3')
   toc.value = Array.from(headings).map((heading, index) => {
     const id = `heading-${index}`
     heading.setAttribute('id', id)
     return {
       id,
-      text: heading.textContent,
+      // text: heading.textContent,
+      text: (heading.textContent || '').trim(),
       depth: heading.tagName === 'H2' ? 2 : 3
     }
   })
