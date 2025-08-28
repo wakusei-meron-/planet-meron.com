@@ -11,12 +11,17 @@
     </dl>
 
     <div v-if="!!article?.image" class="article-hero">
-      <v-img 
-        :src="article?.image" 
-        max-height="400"
-        cover
-        class="article-hero-image"
-      />
+      <ClientOnly>
+        <v-img 
+          :src="article?.image" 
+          max-height="400"
+          cover
+          class="article-hero-image"
+        />
+        <template #fallback>
+          <div style="height: 400px; background-color: #f5f5f5;"></div>
+        </template>
+      </ClientOnly>
     </div>
 
     <div class="article-tags">

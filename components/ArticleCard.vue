@@ -50,24 +50,29 @@
               </div>
             </div>
             
-            <v-img
-              v-if="article.image"
-              :src="article.image"
-              width="180"
-              height="135"
-              cover
-              class="article-card-image"
-            >
-              <template v-slot:placeholder>
-                <v-row
-                  class="fill-height ma-0"
-                  align="center"
-                  justify="center"
-                >
-                  <v-progress-circular indeterminate color="primary" size="24"></v-progress-circular>
-                </v-row>
+            <ClientOnly>
+              <v-img
+                v-if="article.image"
+                :src="article.image"
+                width="180"
+                height="135"
+                cover
+                class="article-card-image"
+              >
+                <template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
+                    <v-progress-circular indeterminate color="primary" size="24"></v-progress-circular>
+                  </v-row>
+                </template>
+              </v-img>
+              <template #fallback>
+                <div v-if="article.image" style="width: 180px; height: 135px; background-color: #f5f5f5;"></div>
               </template>
-            </v-img>
+            </ClientOnly>
           </div>
         </v-card>
       </nuxt-link>

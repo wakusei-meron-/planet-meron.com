@@ -13,7 +13,12 @@
           <v-card-text>{{ link?.description }}</v-card-text>
         </div>
 
-        <v-img class="embed-link-image" :src="link?.image" cover></v-img>
+        <ClientOnly>
+          <v-img class="embed-link-image" :src="link?.image" cover></v-img>
+          <template #fallback>
+            <div class="embed-link-image" style="background-color: #f5f5f5;"></div>
+          </template>
+        </ClientOnly>
       </div>
     </v-card>
   </a>
