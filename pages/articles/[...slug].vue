@@ -124,9 +124,12 @@
 
 <script setup lang="ts">
 import { computed, ref, onMounted, nextTick } from 'vue'
+import { withoutTrailingSlash } from 'ufo'
 import { formatDate } from '~/utils/dateUtils'
 
-const path = useRoute().path
+// const path = useRoute().path
+const route = useRoute()
+const path = withoutTrailingSlash(route.path, true)
 const config = useRuntimeConfig()
 
 // const { data: article } = await useAsyncData(`articles-${path}`, () => {
