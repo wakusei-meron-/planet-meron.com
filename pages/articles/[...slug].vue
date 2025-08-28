@@ -127,14 +127,10 @@ import { computed, ref, onMounted, nextTick } from 'vue'
 import { withoutTrailingSlash } from 'ufo'
 import { formatDate } from '~/utils/dateUtils'
 
-// const path = useRoute().path
 const route = useRoute()
 const path = withoutTrailingSlash(route.path, true)
 const config = useRuntimeConfig()
 
-// const { data: article } = await useAsyncData(`articles-${path}`, () => {
-//   return queryCollection('articles').path(path).first()
-// })
 const { data: article } = await useAsyncData(
   `articles-${path}`,
   () => queryCollection('articles').path(path).first(),
@@ -159,41 +155,57 @@ const formattedDate = computed(() => {
   return ''
 })
 
+const reqURL = useRequestURL() // SSR/Client 両方で同じ API で現在の URL を取れる
+const site  = useSiteConfig() 
 const fullUrl = computed(() => {
-  if (typeof window !== 'undefined') {
-    return window.location.href
-  }
-  return `${config.public.siteUrl || 'https://planet-meron.com'}${path}`
+  const origin = site.url.replace(/\/$/, '')
+  return `${origin}${path}`
 })
+// const reqURL = useRequestURL() // SSR/Client 両方で同じ API で現在の URL を取れる
+console.log(site.url, reqURL.origin)
+// // const canonicalUrl = computed(() => {
+// //   const origin =  site.url.replace(/\/$/, '')
+// //   const pathname = withoutTrailingSlash(route.fullPath, true)
+// //   return origin + pathname
+// // })
+// const fullUrl = computed(() => {
+//   // 由来が混ざらないように origin は一つに決め打ち
+//   // const origin = (config.public.siteUrl || reqURL.origin).replace(/\/$/, '')
+//   const origin = reqURL.origin.replace(/\/$/, '')
+//   // path は常に「末尾スラなし」に正規化（Netlify でもずれないように統一）
+//   const pathname = withoutTrailingSlash(route.fullPath, true)
+//   return origin + pathname
+// })
 
 // const toc = ref([])
-type TocItem = { id: string; text: string; depth: 2 | 3 }
-const toc = ref<TocItem[]>([])
-const copied = ref(false)
-const isClient = ref(false)
+// type TocItem = { id: string; text: string; depth: 2 | 3 }
+// const toc = ref<TocItem[]>([])
+// const copied = ref(false)
+// const isClient = ref(false)
 
 
-onMounted(async () => {
-  await nextTick()
-  isClient.value = true
-  generateToc()
-})
+// onMounted(async () => {
+//   // await nextTick()
+//   isClient.value = true
+//   // generateToc()
+// })
 
-const generateToc = () => {
-  // const headings = document.querySelectorAll('.article-body h2, .article-body h3')
-  // toc.value = Array.from(headings).map((heading, index) => {
-  const headings = document.querySelectorAll('.article-body h2, .article-body h3')
-  toc.value = Array.from(headings).map((heading, index) => {
-    const id = `heading-${index}`
-    heading.setAttribute('id', id)
-    return {
-      id,
-      // text: heading.textContent,
-      text: (heading.textContent || '').trim(),
-      depth: heading.tagName === 'H2' ? 2 : 3
-    }
-  })
-}
+// const generateToc = () => {
+//   // const headings = document.querySelectorAll('.article-body h2, .article-body h3')
+//   // toc.value = Array.from(headings).map((heading, index) => {
+//   const headings = document.querySelectorAll('.article-body h2, .article-body h3')
+//   toc.value = Array.from(headings).map((heading, index) => {
+//     const id = `heading-${index}`
+//     heading.setAttribute('id', id)
+//     return {
+//       id,
+//       // text: heading.textContent,
+//       text: (heading.textContent || '').trim(),
+//       depth: heading.tagName === 'H2' ? 2 : 3
+//     }
+//   })
+// }
+const toc = computed(() => article.value?.body?.toc?.links ?? [])
 
 const scrollToSection = (id: string, event: Event) => {
   event.preventDefault()

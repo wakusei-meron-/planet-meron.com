@@ -3,6 +3,11 @@ export default defineNuxtConfig({
   // target: 'static',
   ssr: true,
 
+  experimental: {
+    defaults: {
+      nuxtLink: { trailingSlash: 'remove' } // もしくは 'append'
+    }
+  },
   //
   // server: {
   //   port: 3005, //   host: '0.0.0.0'
@@ -66,6 +71,9 @@ export default defineNuxtConfig({
   // },
 
   vite: {
+    define: {
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: true
+    },
     server: {
       allowedHosts: ["genki-x570s-aorus-elite-ax"],
     },
