@@ -52,7 +52,7 @@
     </v-card>
 
     <!-- 人気記事セクション -->
-    <v-card class="sidemenu-section" elevation="0" v-if="popularArticles.length > 0">
+    <!-- <v-card class="sidemenu-section" elevation="0" v-if="popularArticles.length > 0">
       <h3 class="sidemenu-title">
         <v-icon size="20" class="mr-2">mdi-fire</v-icon>
         人気の記事
@@ -77,7 +77,7 @@
           </v-list-item-subtitle>
         </v-list-item>
       </v-list>
-    </v-card>
+    </v-card> -->
 
     <!-- タグクラウドセクション -->
     <v-card class="sidemenu-section" elevation="0" v-if="tagCloud.length > 0">
