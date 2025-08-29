@@ -56,7 +56,7 @@
       <nav class="article-toc-nav">
         <ul>
           <li v-for="link in toc" :key="link.id" :class="`toc-level-${link.depth}`">
-            <a :href="`#${link.id}`" @click="scrollToSection(link.id, $event)">
+            <a :to="`#${link.id}`" @click="scrollToSection(link.id, $event)">
               {{ link.text }}
             </a>
           </li>
@@ -83,7 +83,7 @@
           variant="tonal"
           size="small"
           icon
-          :href="`https://twitter.com/intent/tweet?text=${encodeURIComponent(article?.title || '')}&url=${encodeURIComponent(fullUrl)}`"
+          :to="`https://twitter.com/intent/tweet?text=${encodeURIComponent(article?.title || '')}&url=${encodeURIComponent(fullUrl)}`"
           target="_blank"
         >
           <v-icon>mdi-twitter</v-icon>
@@ -93,7 +93,7 @@
           variant="tonal"
           size="small"
           icon
-          :href="`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(fullUrl)}`"
+          :to="`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(fullUrl)}`"
           target="_blank"
         >
           <v-icon>mdi-facebook</v-icon>
@@ -103,7 +103,7 @@
           variant="tonal"
           size="small"
           icon
-          :href="`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(fullUrl)}`"
+          :to="`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(fullUrl)}`"
           target="_blank"
         >
           <v-icon>mdi-linkedin</v-icon>
