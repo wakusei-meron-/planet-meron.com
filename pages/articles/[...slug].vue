@@ -51,18 +51,23 @@
       </v-chip>
     </div>
 
-    <div class="article-toc" v-if="toc && toc.length > 0">
-      <h2 class="article-toc-title">目次</h2>
-      <nav class="article-toc-nav">
-        <ul>
-          <li v-for="link in toc" :key="link.id" :class="`toc-level-${link.depth}`">
-            <a :to="`#${link.id}`" @click="scrollToSection(link.id, $event)">
-              {{ link.text }}
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <ClientOnly>
+      <div class="article-toc" v-if="toc && toc.length > 0">
+        <h2 class="article-toc-title">目次</h2>
+        <nav class="article-toc-nav">
+          <ul>
+            <li v-for="link in toc" :key="link.id" :class="`toc-level-${link.depth}`">
+              <a :href="`#${link.id}`" @click="scrollToSection(link.id, $event)">
+                {{ link.text }}
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <template #fallback>
+        <div class="article-toc" style="height: 200px;"></div>
+      </template>
+    </ClientOnly>
 
     <!-- <div class="article-body">
       <ContentRenderer :value="article" />
