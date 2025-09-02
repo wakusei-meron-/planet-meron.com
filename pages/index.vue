@@ -82,15 +82,29 @@ let { data: articles, refresh } = await useAsyncData(
   }
 )
 
+// 検索中のローディング状態
+const isSearchLoading = ref(false)
+
 // クエリパラメータが変更されたときにデータを再取得
-watch([searchQuery, tagFilter], () => {
+watch([searchQuery, tagFilter], async () => {
+  isSearchLoading.value = true
   page.value = 1
-  refreshCount()
-  refresh()
+  await Promise.all([
+    refreshCount(),
+    refresh()
+  ])
+  // 少し遅延を入れてスムーズに
+  setTimeout(() => {
+    isSearchLoading.value = false
+  }, 200)
 })
 
-watch(page, () => {
-  refresh()
+watch(page, async () => {
+  isSearchLoading.value = true
+  await refresh()
+  setTimeout(() => {
+    isSearchLoading.value = false
+  }, 200)
 })
 
 // 検索やタグフィルタをクリア
@@ -101,6 +115,8 @@ const clearFilters = () => {
 
 <template>
   <div class="article-container">
+    <!-- 検索ローディング -->
+    <LoadingOverlay :loading="isSearchLoading" text="記事を検索中..." />
     <!-- フィルタ表示 -->
     <div v-if="searchQuery || tagFilter" class="filter-info">
       <v-alert

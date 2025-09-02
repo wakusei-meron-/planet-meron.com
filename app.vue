@@ -1,5 +1,8 @@
 <template>
   <v-app>
+    <!-- ローディングオーバーレイ -->
+    <LoadingOverlay :loading="isPageLoading" text="ページを読み込み中..." />
+    
     <header class="app-header" :class="{ 'app-header--scrolled': isScrolled }">
       <div class="app-header-top">
         <nuxt-link class="logo" to="/">
@@ -97,11 +100,25 @@ export default defineComponent({
       isScrolled: false,
       activeTab: null,
       showScrollTop: false,
+      isPageLoading: false,
     };
   },
   mounted() {
     this.activeTab = this.$route.path;
     window.addEventListener('scroll', this.handleScroll);
+    
+    // ページ遷移時のローディング制御
+    this.$router.beforeEach((to, from) => {
+      if (to.path !== from.path || JSON.stringify(to.query) !== JSON.stringify(from.query)) {
+        this.isPageLoading = true;
+      }
+    });
+
+    this.$router.afterEach(() => {
+      setTimeout(() => {
+        this.isPageLoading = false;
+      }, 300);
+    });
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
