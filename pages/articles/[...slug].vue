@@ -88,7 +88,7 @@
           variant="tonal"
           size="small"
           icon
-          :to="`https://twitter.com/intent/tweet?text=${encodeURIComponent(article?.title || '')}&url=${encodeURIComponent(fullUrl)}`"
+          :href="`https://twitter.com/intent/tweet?text=${encodeURIComponent(article?.title || '')}&url=${encodeURIComponent(fullUrl)}`"
           target="_blank"
         >
           <v-icon>mdi-twitter</v-icon>
@@ -98,7 +98,7 @@
           variant="tonal"
           size="small"
           icon
-          :to="`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(fullUrl)}`"
+          :href="`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(fullUrl)}`"
           target="_blank"
         >
           <v-icon>mdi-facebook</v-icon>
@@ -108,7 +108,7 @@
           variant="tonal"
           size="small"
           icon
-          :to="`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(fullUrl)}`"
+          :href="`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(fullUrl)}`"
           target="_blank"
         >
           <v-icon>mdi-linkedin</v-icon>
