@@ -5,6 +5,7 @@
       :alt="props.alt"
       :width="props.width"
       :height="props.height"
+      loading="lazy"
       class="prose-img"
       @click="openModal"
     />

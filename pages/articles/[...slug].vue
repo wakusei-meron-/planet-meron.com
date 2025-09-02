@@ -234,9 +234,48 @@ const copyUrl = async () => {
   }
 }
 
+// 構造化データ（JSON-LD）の生成
+const structuredData = computed(() => {
+  if (!article.value) return null
+  
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.value.title,
+    description: article.value.description || '',
+    image: article.value.image ? `${site.url}${article.value.image}` : `${site.url}/images/default-og.png`,
+    datePublished: article.value.date || new Date().toISOString(),
+    dateModified: article.value.updatedAt || article.value.date || new Date().toISOString(),
+    author: {
+      '@type': 'Person',
+      name: 'Planet MERON',
+      url: site.url
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: "Planet Meron's Note",
+      logo: {
+        '@type': 'ImageObject',
+        url: `${site.url}/images/self_icon.png`
+      }
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': fullUrl.value
+    }
+  }
+})
+
 useHead({
   title: article?.value?.title,
+  link: [
+    {
+      rel: 'canonical',
+      href: fullUrl.value
+    }
+  ],
   meta: [
+    { name: "robots", content: "index, follow" },
     { hid: "og:type", name: "og:type", content: "article" },
     {
       hid: "description",
@@ -264,10 +303,32 @@ useHead({
       content: article?.value?.image || '/images/default-og.png',
     },
     {
+      property: "article:published_time",
+      content: article?.value?.date || new Date().toISOString(),
+    },
+    {
+      property: "article:author",
+      content: "Planet MERON",
+    },
+    {
       name: "twitter:card",
       content: "summary_large_image",
     },
+    {
+      name: "twitter:site",
+      content: "@b0941015",
+    },
+    {
+      name: "twitter:creator",
+      content: "@b0941015",
+    },
   ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(structuredData.value)
+    }
+  ]
 });
 </script>
 
