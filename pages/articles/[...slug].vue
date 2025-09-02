@@ -440,7 +440,7 @@ useHead({
       h4 { font-size: 1.25rem; }
       
       p {
-        margin-bottom: 1.5em;
+        margin-bottom: 1.0em;
         line-height: 1.8;
         color: $text-primary;
       }
@@ -477,7 +477,7 @@ useHead({
       // コードブロック（ProseCodeコンポーネントでスタイリングされるため最小限に）
       pre {
         margin: 0;
-        
+        margin-bottom: 2.0em;
         code {
           background: none;
           padding: 0;
