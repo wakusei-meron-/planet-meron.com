@@ -305,7 +305,9 @@ useHead({
     {
       hid: "og:image",
       property: "og:image",
-      content: article?.value?.image || '/images/default-og.png',
+      content: article?.value?.image 
+        ? `${site.url}${article.value.image}` 
+        : `${site.url}/images/default-og.png`,
     },
     {
       property: "article:published_time",
@@ -326,6 +328,20 @@ useHead({
     {
       name: "twitter:creator",
       content: "@b0941015",
+    },
+    {
+      name: "twitter:title",
+      content: article?.value?.title,
+    },
+    {
+      name: "twitter:description",
+      content: article?.value?.description,
+    },
+    {
+      name: "twitter:image",
+      content: article?.value?.image 
+        ? `${site.url}${article.value.image}` 
+        : `${site.url}/images/default-og.png`,
     },
   ],
   script: [
